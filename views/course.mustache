@@ -58,7 +58,7 @@
             {{#../course.allowDropIn}}
 
               {{#user}}
-                <form method="post" action="/sessions/{{_id}}/book">
+                <form method="post" action="/sessions/{{course_id}}/book">
                   <button class="btn" type="submit" {{#isFull}}disabled{{/isFull}}>
                     Book this session
                   </button>

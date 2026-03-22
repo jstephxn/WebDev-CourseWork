@@ -8,13 +8,16 @@ import { SessionModel } from "../models/sessionModel.js";
 
 export const bookCourse = async (req, res) => {
   try {
-    const { userId } = req.session.user?._id;
+    const userId = req.session.user?._id;
 
+    // Get course ID from url param instead of body
+    const courseId = req.params._id;
+
+    //Ensure user is logged in 
     if(!userId){ return res.status(401).send("You must be logged in to book a course."); }
 
-    const {courseId } = req.body;
     const booking = await bookCourseForUser(userId, courseId);
-    res.status(201).json({ booking });
+    res.status(201).redirect(`/bookings/${booking._id}`);
   } catch (err) {
     console.error(err);
     res.status(400).json({ error: err.message });

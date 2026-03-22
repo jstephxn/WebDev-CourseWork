@@ -4,4 +4,3 @@
 {"name":"james","email":"james@email.com","password":"$2b$10$vBPUckkJ.cx.Sz5OO0UAgOa981HKpESed6SrQN1Gp3eA2N4Ek3gNW","role":"student","createdAt":"2026-03-22T19:33:45.059Z","_id":"dPdZCQUbZAcMdLvt"}
 {"name":"Fiona","email":"fiona@student.local","role":"student","_id":"hE3RtXPSjQiV3E99"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"email","unique":true}}
