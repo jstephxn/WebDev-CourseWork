@@ -8,7 +8,11 @@ import { SessionModel } from "../models/sessionModel.js";
 
 export const bookCourse = async (req, res) => {
   try {
-    const { userId, courseId } = req.body;
+    const { userId } = req.session.user?._id;
+
+    if(!userId){ return res.status(401).send("You must be logged in to book a course."); }
+
+    const {courseId } = req.body;
     const booking = await bookCourseForUser(userId, courseId);
     res.status(201).json({ booking });
   } catch (err) {
