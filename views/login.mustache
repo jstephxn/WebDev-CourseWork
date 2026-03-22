@@ -1,6 +1,14 @@
 {{> head}}
 {{> header}}
 
-<h1> Hello! This will be a Login page</h1>
+<h1>Login</h1>
+
+<form method="POST" action="/auth/login">
+    <label name="email">Email:</label>
+    <input name="email" placeholder="Email"/>
+    <label name="password">Password:</label>
+    <input name="password" type="password" placeholder="Password"/>
+    <button>Login</button>
+</form>
 
 {{> footer}}

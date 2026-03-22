@@ -1,6 +1,14 @@
 {{> head}}
 {{> header}}
 
-<h1> Hello! This will be a register page</h1>
+<h1>Register</h1>
+
+<form method="POST" action="/auth/register">
+  <input name="name" placeholder="Name" />
+  <input name="email" placeholder="Email" type="Email"/>
+  <input name="password" type="password" placeholder="Password" />
+
+  <button>Register</button>
+</form>
 
 {{> footer}}

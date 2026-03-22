@@ -139,9 +139,9 @@ export const bookingConfirmationPage = async (req, res, next) => {
 };
 
 export const loginPage = async (req, res, next) => {
-  res.render("/login", { title: "Login" })
+  res.render("login", { title: "Login" })
 };
 
 export const registerPage = async (req, res, next) => {
-  res.render("/register", { title: "Register" })
+  res.render("register", { title: "Register" })
 }; 

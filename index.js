@@ -1,17 +1,18 @@
 // index.js
 import express from "express";
+import session from "express-session";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import mustacheExpress from "mustache-express";
 import path from "path";
 import { fileURLToPath } from "url";
 
-
 // import authRoutes from './routes/auth.js';
 import courseRoutes from "./routes/courses.js";
 import sessionRoutes from "./routes/sessions.js";
 import bookingRoutes from "./routes/bookings.js";
 import viewRoutes from "./routes/views.js";
+import authRoutes from "./routes/auth.js";
 import { initDb } from "./models/_db.js";
 
 dotenv.config();
@@ -35,15 +36,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
+// Configure session middleware
+app.use(session({
+  secret: "yogasecret",
+  resave: false,
+  saveUninitialized: false,
+}));
+
+
 // Static
 app.use("/static", express.static(path.join(__dirname, "public")));
 
+// Auth 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
 
 // Health
 app.get("/health", (req, res) => res.json({ ok: true }));
 
 // JSON API routes
-// app.use('/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use("/courses", courseRoutes);
 app.use("/sessions", sessionRoutes);
 app.use("/bookings", bookingRoutes);

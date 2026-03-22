@@ -2,12 +2,15 @@
   <div class="wrap">
     🧘 Yoga Studio
     <nav>
-      <a href="../login">Login</a>
-      <a href="../register">Register</a>
+    {{^user}}
+      <a href="login">Login</a>
+      <a href="register">Register</a>
+    {{/user}}
     </nav>
     {{#user}}
     <div class="user">
       Signed in as <strong>{{ name }}</strong>
+      <a href="/auth/logout">Logout</a>
     </div>
     {{/user}}
   </div>
