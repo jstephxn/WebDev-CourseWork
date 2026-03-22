@@ -1,4 +1,6 @@
-
+{{> head}}
+{{> header}}
+<link rel="stylesheet" href="../public/styles.css"/>
 <select name="level">
   <option value="" {{^filters.level}}selected{{/filters.level}}>Any</option>
   <option value="beginner" {{#filters}}{{#level}} {{#isBeginner}}selected{{/isBeginner}} {{/level}}{{/filters}}>Beginner</option>
@@ -44,3 +46,4 @@
     {{pagination.nextLink}}Next →</a>
   {{/pagination.hasNext}}
 </nav> -->
+{{> footer}}
