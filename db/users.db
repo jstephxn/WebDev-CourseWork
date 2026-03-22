@@ -2,3 +2,4 @@
 {"name":"Ben","email":"ben@yoga.local","role":"instructor","_id":"7QQGARdjc2wkCvHF"}
 {"name":"Fiona","email":"fiona@student.local","role":"student","_id":"hE3RtXPSjQiV3E99"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"email","unique":true}}
