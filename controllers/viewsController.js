@@ -23,6 +23,7 @@ const fmtDateOnly = (iso) =>
     day: "numeric",
   });
 
+
 export const homePage = async (req, res, next) => {
   try {
     const courses = await CourseModel.list();
@@ -136,3 +137,11 @@ export const bookingConfirmationPage = async (req, res, next) => {
     next(err);
   }
 };
+
+export const loginPage = async (req, res, next) => {
+  res.render("/login", { title: "Login" })
+};
+
+export const registerPage = async (req, res, next) => {
+  res.render("/register", { title: "Register" })
+}; 
