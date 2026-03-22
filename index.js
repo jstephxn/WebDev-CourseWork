@@ -6,6 +6,7 @@ import mustacheExpress from "mustache-express";
 import path from "path";
 import { fileURLToPath } from "url";
 
+
 // import authRoutes from './routes/auth.js';
 import courseRoutes from "./routes/courses.js";
 import sessionRoutes from "./routes/sessions.js";
@@ -19,6 +20,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const app = express();
+
 
 // View engine (Mustache)
 app.engine(
