@@ -15,9 +15,10 @@
   <!-- 🔐 BOOK FULL COURSE -->
   <section>
     <h2>Book the full course</h2>
-
+    <p>course._id: {{course._id}}</p>
+    <p>course.id: {{course.id}}</p>
     {{#user}}
-      <form action="/courses/{{course._id}}/book" method="post">
+      <form action="/courses/{{course._id}}/book" method="POST">
         <button class="btn primary" type="submit">
           Book full course
         </button>
@@ -58,7 +59,7 @@
             {{#../course.allowDropIn}}
 
               {{#user}}
-                <form method="post" action="/sessions/{{course_id}}/book">
+                <form action="/sessions/{{id}}/book" method="POST" >
                   <button class="btn" type="submit" {{#isFull}}disabled{{/isFull}}>
                     Book this session
                   </button>

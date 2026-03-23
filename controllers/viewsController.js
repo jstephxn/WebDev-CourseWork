@@ -73,6 +73,7 @@ export const courseDetailPage = async (req, res, next) => {
     res.render("course", {
       title: course.title,
       course: {
+        _id: course._id,
         id: course._id,
         title: course.title,
         level: course.level,
@@ -92,7 +93,11 @@ export const courseDetailPage = async (req, res, next) => {
 export const postBookCourse = async (req, res, next) => {
   try {
     const courseId = req.params.id;
-    const booking = await bookCourseForUser(req.user._id, courseId);
+    const booking = await bookCourseForUser(
+      req.session.user._id, 
+      courseId
+    );
+
     res.redirect(`/bookings/${booking._id}?status=${booking.status}`);
   } catch (err) {
     res
@@ -104,7 +109,7 @@ export const postBookCourse = async (req, res, next) => {
 export const postBookSession = async (req, res, next) => {
   try {
     const sessionId = req.params.id;
-    const booking = await bookSessionForUser(req.user._id, sessionId);
+    const booking = await bookSessionForUser(req.session.user._id, sessionId);
     res.redirect(`/bookings/${booking._id}?status=${booking.status}`);
   } catch (err) {
     const message =
