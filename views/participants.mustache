@@ -1,0 +1,34 @@
+{{> head}}
+{{> header}}
+
+<h1>Session Participants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#participants}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{email}}</td>
+        <td>{{status}}</td>
+      </tr>
+    {{/participants}}
+
+    {{^participants}}
+      <tr>
+        <td colspan="3">No participants yet</td>
+      </tr>
+    {{/participants}}
+  </tbody>
+</table>
+
+<a href="/">Back</a>
+
+{{> footer}}

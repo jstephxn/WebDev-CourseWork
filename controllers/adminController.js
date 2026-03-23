@@ -37,6 +37,31 @@ export const deleteCourse = async (req, res) => {
 
 // View Course participants (bookings)
 export const viewCourseParticipants = async (req, res) => { 
-    const bookings = await BookingModel.listByCourse(req.params.id);
-    res.render("course_participants", { title: "Course Participants", bookings });
+    try{
+        if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to view participants."); }
+
+        const sessionid = req.params.id;
+
+        // Get all bookings for this session 
+        const bookings = await BookingModel.findById({sessionids: sessionid});
+
+        //Get user details for each booking
+        const participants = await Promise.all(
+            bookings.map(async (b) => {
+                const user = await UserModel.findByID(b.userId);
+                return {
+                    name: user.name,
+                    email: user.email,
+                    status: b.status,
+                };
+            })
+        );      
+        
+        // Render the participants page with the retrieved data from the database
+        res.render("participants", { title: "Course Participants", participants });
+        
+        } catch(err){
+        console.error(err);
+        res.status(500).json("Failed to retrieve participants");
+    }
 };

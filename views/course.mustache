@@ -23,9 +23,6 @@
           Book full course
         </button>
       </form>
-      {{#isInstructor}}
-        <form action="" method="POST"
-      {{/isInstructor}}
     {{/user}}
 
     {{^user}}
@@ -59,6 +56,9 @@
           <td>{{remaining}}</td>
 
           <td>
+            {{#isInstructor}}
+                <a href="/admin/sessions/{{id}}/participants">View Participants</a>
+            {{/isInstructor}}
             {{#../course.allowDropIn}}
 
               {{#user}}
@@ -67,6 +67,7 @@
                     Book this session
                   </button>
                 </form>
+    
               {{/user}}
 
               {{^user}}
