@@ -27,6 +27,6 @@ export const UserModel = {
 
   // Find user by ID (used for sessions / bookings)
   async findById(id) {
-    return usersDb.findById({ _id: id });
+    return usersDb.findOne({ _id: id });
   },
 };

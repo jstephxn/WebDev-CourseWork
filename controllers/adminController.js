@@ -1,6 +1,7 @@
 import {CourseModel} from "../models/courseModel.js";
 import { SessionModel } from "../models/sessionModel.js";
 import { BookingModel } from "../models/bookingModel.js";
+import { UserModel } from "../models/userModel.js";
 
 // Create a new course
 export const createCourse = async (req, res) => {
@@ -43,15 +44,15 @@ export const viewCourseParticipants = async (req, res) => {
         const sessionid = req.params.id;
 
         // Get all bookings for this session 
-        const bookings = await BookingModel.findById({sessionids: sessionid});
+        const bookings = await BookingModel.findBySessionId(sessionid);
 
         //Get user details for each booking
         const participants = await Promise.all(
             bookings.map(async (b) => {
-                const user = await UserModel.findByID(b.userId);
+                const user = await UserModel.findById(b.userId);
                 return {
-                    name: user.name,
-                    email: user.email,
+                    name: user.name || "Unknown",
+                    email: user.email || "Unknown",
                     status: b.status,
                 };
             })
