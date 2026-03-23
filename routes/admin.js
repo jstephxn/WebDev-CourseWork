@@ -1,8 +1,9 @@
-import {router} from "express";
+import { Router } from "express";
 import { 
     createCourse,
     deleteCourse,
-    viewCourseParticipants
+    viewCourseParticipants,
+    showCreateCoursePage
 } from "../controllers/adminController.js";
 
 const router = Router();
