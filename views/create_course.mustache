@@ -1,0 +1,38 @@
+{{> head}}
+{{> header}}
+
+
+<h1>Create Course</h1>
+
+<form method="POST" action="/admin/courses">
+
+  <label>Title</label>
+  <input name="title" required />
+
+  <label>Level</label>
+  <input name="level" />
+
+  <label>Type</label>
+  <select name="type">
+    <option value="WEEKLY_BLOCK">Weekly Block</option>
+    <option value="WEEKEND_WORKSHOP">Weekend Workshop</option>
+  </select>
+
+  <label>Allow Drop-in</label>
+  <input type="checkbox" name="allowDropIn" value="true" />
+
+  <label>Start Date</label>
+  <input type="date" name="startDate" />
+
+  <label>End Date</label>
+  <input type="date" name="endDate" />
+
+  <label>Description</label>
+  <textarea name="description"></textarea>
+
+  <button type="submit">Create Course</button>
+
+</form>
+
+
+{{> footer}}

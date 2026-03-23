@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 import courseRoutes from "./routes/courses.js";
 import sessionRoutes from "./routes/sessions.js";
 import bookingRoutes from "./routes/bookings.js";
+import adminRoutes from "./routes/admin.js";
 import viewRoutes from "./routes/views.js";
 import authRoutes from "./routes/auth.js";
 import { initDb } from "./models/_db.js";
@@ -50,6 +51,7 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 // Auth 
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
+  res.locals.isInstructor = req.session.user?.role === "instructor";
   next();
 });
 
@@ -58,7 +60,8 @@ app.get("/health", (req, res) => res.json({ ok: true }));
 
 // JSON API routes
 app.use('/auth', authRoutes);
-app.use("api/courses", courseRoutes);
+app.use("/admin", adminRoutes);
+app.use("/api/courses", courseRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/bookings", bookingRoutes);
 
