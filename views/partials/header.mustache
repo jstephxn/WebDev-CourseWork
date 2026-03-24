@@ -26,7 +26,7 @@
       {{/user}}
 
       {{#user}}
-        <p>Signed in as <strong>{{ name }}</strong></p>
+        <a href="/auth/user_account">{{user.name}}'s Account</a>
         <a href="/auth/logout">Logout</a>
     </nav>
     

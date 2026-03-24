@@ -23,7 +23,8 @@ List Key:
     ✅ User Login
 
     ✅ Logged in users able to book course
-    ❌ Logged in Users able to change their password
+    🚧 Logged in Users able to view 'My Account' Page
+    🚧 Logged in Users able to change their password
     ❌ Logged in Users able to view their bookings
 
     ✅ Admins (Instructors) able to add new courses

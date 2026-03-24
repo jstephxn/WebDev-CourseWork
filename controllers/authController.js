@@ -67,3 +67,43 @@ export const logoutUser = (req, res) => {
     res.redirect("/");
 };
 
+// Show change password page
+export const showChangePasswordPage = (req, res) => {
+    res.render("change-password");
+};
+
+// Handle change password form submission
+export const changePassword = async (req, res) => {
+    const user = req.session.user;
+    if (!user) { return res.redirect("/auth/login"); }
+
+    // Get a fresh user from the database
+    const freshUser = await UserModel.findById(user.id);
+    
+    // Check if current password is correct
+    const isMatch = await bcrypt.compare(req.body.currentPassword, freshUser.password);
+
+    if (!isMatch) {
+        return res.send("Current password is incorrect.");
+    }
+
+    // Hash the new password
+    const hashedNewPassword = await bcrypt.hash(req.body.newPassword, 10);
+
+    // Update the user's password in the database
+    await UserModel.updatePassword(user.id, hashedNewPassword);
+
+    // Log the user out after changing password
+    req.session.destroy();
+
+    res.render("/error", { message: "Password changed successfully. Please log in again." });
+};
+
+// Show user account page
+export const showUserAccountPage = (req, res) => {
+    const user = req.session.user;
+    if (!user) { return res.redirect("/auth/login"); }
+    
+    res.render("user_account", { user }, {title : "My Account"});
+};
+

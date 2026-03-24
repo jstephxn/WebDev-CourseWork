@@ -42,5 +42,9 @@ export const UserModel = {
 
   async update(id, updates) {
     return usersDb.update({ _id: id }, { $set: updates });
-  }
+  },
+
+  async updatePassword(id, newPassword) {
+    return usersDb.update({ _id: id }, { $set: { password: newPassword } });
+  },
 };

@@ -4,7 +4,10 @@ import {
     showRegisterPage,
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    showChangePasswordPage,
+    changePassword,
+    showUserAccountPage
 } from '../controllers/authController.js';
 
 const router = Router();
@@ -24,5 +27,12 @@ router.post('/login', loginUser);
 // Handle logout
 router.get('/logout', logoutUser);
 router.post('/logout', logoutUser);
+
+// Handle Password chanege
+router.get('/change-password', showChangePasswordPage);
+router.post('/change-password', changePassword);
+
+// Show user account page
+router.get('/user_account', showUserAccountPage);
 
 export default router;
