@@ -24,10 +24,22 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
     ✅ Admins (Instructors) able to add users 
     ✅ Admins (Instructors) able to delete users
     ✅ Admins able to Update User (Name, Password, role)
+    ❌ Fix Reset on Course Filter
 
     Visual Edits:
-        ❌ Add images
-        ❌ Update Navbar to contain a logo and better link layout
-        ❌ Refine Homepage
-        ❌ Update CSS to add different buttons
+        ✅ Add images
+        ✅ Update Navbar to contain a logo and better link layout
+        ✅ Refine Homepage
+        ❌ Refine Login
+        ❌ Refine Register
+        ❌ Refine Courses Page
+        ❌ Refine Course Page
+        ❌ Refine Booking confirmation
+        ❌ Refine Class Creation
+        ❌ Refine Class Editing
+        ❌ Refine Session Creation
+        ❌ Refine Action Buttons
+        ❌ Refine User Creation
+        ❌ Refine User Editing 
+
             

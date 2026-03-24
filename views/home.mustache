@@ -2,26 +2,26 @@
 {{> head}}
 {{> header}}
 <link rel="stylesheet" href="../public/styles.css"/>
-<h1>Upcoming Courses</h1>
 
-<div class="cards">
-  {{#courses}}
-  <article class="card">
-    <h2>{{title}}</h2>
-    <p class="muted">
-      Level: {{level}} • Type: {{type}} {{#allowDropIn}}• Drop-in OK{{/allowDropIn}}
-    </p>
-    <p>{{description}}</p>
-    <p class="muted">Dates: {{startDate}}  {{endDate}}</p>
-    <p class="muted">Next session: {{nextSession}} • Sessions: {{sessionsCount}}</p>
-    <p><a href="/courses/" class="btn primary"/> View &amp; Book</a></p>
-  </article>
-  {{/courses}}
-
-  {{^courses}}
-    <p>No courses available yet.</p>
-  {{/courses}}
+<div>
+  <h1 style="text-align:center;"> Welcome to Yoga Studio </h1>
 </div>
+
+<div>
+  <img src="/static/images/YogaBanner.png" class="banner"/>
+</div>
+
+<div>
+  <h2 class="paragraph-header"> About us </h2>
+  <p class="text-display"> 
+    At our yoga studio, we believe in creating a welcoming space where everyone can reconnect with their body, mind, and breath. Whether you're a complete beginner or an experienced practitioner, our classes are designed to support your personal journey toward balance, strength, and inner calm. Guided by passionate instructors, we focus on mindful movement, relaxation, and holistic wellbeing—helping you leave each session feeling refreshed, grounded, and empowered.
+  </p>
+  <div class="center-btn">
+    <a href="/courses" class="btn-homepage center-btn"> View Our Courses </a>
+  </div>
+</div>
+
+
 
 {{> footer}}
 ``
