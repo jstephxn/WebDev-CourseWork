@@ -24,7 +24,7 @@ router.get("/courses/new", showCreateCoursePage);
 router.post("/courses", createCourse);
 router.post("/courses/:id/delete", deleteCourse);
 router.get("/courses/:id/edit", showEditCoursePage);
-router.put("/courses/:id", updateCourse);
+router.post("/courses/:id/update", updateCourse);
 
 // Session management routes
 router.get("/sessions/:id/participants", viewCourseParticipants);
@@ -36,6 +36,8 @@ router.post("/courses/:courseId/sessions", createSession);
 router.get("/display_users", showAllUsersPage);
 router.get("/create_user", showCreateUserPage);
 router.post("/create_user", createUser);
+router.get("/users/:id/edit", showEditUserPage);
+router.post("/users/:id/update", updateUser);
 router.post("/:id/delete_user", deleteUser);
 
 

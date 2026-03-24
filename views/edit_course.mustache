@@ -3,7 +3,7 @@
 
 <h1>Edit Course</h1>
 
-<form method="POST" action="/admin/courses/{{course._id}}/edit">
+<form method="POST" action="/admin/courses/{{course._id}}/update">
 
   <label>Title</label>
   <input name="title" value="{{course.title}}" required>
@@ -27,7 +27,7 @@
 
   <label>End Date</label>
   <input type="date" name="endDate" />
-  
+
   <button type="submit" class="btn primary">Update Course</button>
 
 </form>

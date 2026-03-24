@@ -148,7 +148,7 @@ export const updateCourse = async (req, res) => {
     const courseId = req.params.id;
     const { title, description, level, type, allowDropIn, startDate, endDate } = req.body;
     await CourseModel.update(courseId, { title, description, level, type, allowDropIn, startDate, endDate });
-    res.redirect(`/course/${courseId}`);
+    res.redirect(`/courses/${courseId}`);
 };
 
 export const showEditUserPage = async (req, res) => {
@@ -164,7 +164,7 @@ export const updateUser = async (req, res) => {
     const userId = req.params.id;
     const { name, email, role } = req.body;
     await UserModel.update(userId, { name, email, role });
-    res.redirect("/admin/display_users");S
+    res.redirect("/admin/display_users");
 };
 
 

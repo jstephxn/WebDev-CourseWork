@@ -24,4 +24,11 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
     ✅ Admins (Instructors) able to add users 
     ✅ Admins (Instructors) able to delete users
     ❌ Admins able to Update User (Name, Password, role)
+
+    Visual Edits:
+        ❌ Add images
+        ❌ Update Navbar
+        ❌ Refine Homepage
+        ❌ Update CSS to add different buttons 
+        ❌ 
     
