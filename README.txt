@@ -18,21 +18,34 @@ List Key:
 
 
 📖 Features Implemented:
+    
     ✅ User registration
     ✅ User Login
-    ✅ Logged in user able to book course
+
+    ✅ Logged in users able to book course
+    ❌ Logged in Users able to change their password
+    ❌ Logged in Users able to view their bookings
+
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
-    ✅ Admins able to Update Courses
+    ✅ Admins (Instructors) able to Update Courses
     ✅ Admins (Instructors) able to delete courses
     ✅ Admins (Instructors) able to delete sessions
     ✅ Admins (Instructors) able to view a list of participants in the sessions
     ✅ Admins (Instructors) able to add users 
     ✅ Admins (Instructors) able to delete users
-    ✅ Admins able to Update User (Name, Password, role)
-    ❌ Fix Reset on Course Filter
+    ✅ Admins (Instructors) able to Update User (Name, role)
+    ❌ Admins (Instructors) can change a Users Password
+    ❌ Admins (Instructors) can download a csv of course bookings
 
-    Visual Edits:
+    ❌ Fix Reset on Course Filter
+    ❌ Email Formatting check for registration
+    ❌ Prevent double booking
+    ❌ Authorisation Middleware
+
+
+    Visual Edits (CSS):
+        
         ✅ Add images
         ✅ Update Navbar to contain a logo and better link layout
         ✅ Refine Homepage
