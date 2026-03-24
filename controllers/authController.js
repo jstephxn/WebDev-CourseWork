@@ -1,5 +1,7 @@
 import bcrypt from "bcrypt";
 import {UserModel} from "../models/userModel.js";
+import {BookingModel} from "../models/bookingModel.js";
+import {CourseModel} from "../models/courseModel.js";
 
 // Show login page
 export const showLoginPage = (req, res) => {
@@ -69,7 +71,7 @@ export const logoutUser = (req, res) => {
 
 // Show change password page
 export const showChangePasswordPage = (req, res) => {
-    res.render("change-password");
+    res.render("change_password");
 };
 
 // Handle change password form submission
@@ -78,7 +80,7 @@ export const changePassword = async (req, res) => {
     if (!user) { return res.redirect("/auth/login"); }
 
     // Get a fresh user from the database
-    const freshUser = await UserModel.findById(user.id);
+    const freshUser = await UserModel.findById(user._id);
     
     // Check if current password is correct
     const isMatch = await bcrypt.compare(req.body.currentPassword, freshUser.password);
@@ -91,19 +93,40 @@ export const changePassword = async (req, res) => {
     const hashedNewPassword = await bcrypt.hash(req.body.newPassword, 10);
 
     // Update the user's password in the database
-    await UserModel.updatePassword(user.id, hashedNewPassword);
+    await UserModel.updatePassword(user._id, hashedNewPassword);
 
     // Log the user out after changing password
     req.session.destroy();
 
-    res.render("/error", { message: "Password changed successfully. Please log in again." });
+    res.render("error", { message: "Password changed successfully. Please log in again." });
 };
 
 // Show user account page
-export const showUserAccountPage = (req, res) => {
+export const showUserAccountPage = async (req, res) => {
     const user = req.session.user;
     if (!user) { return res.redirect("/auth/login"); }
-    
-    res.render("user_account", { user }, {title : "My Account"});
+
+    // Get users bookings from the database
+    const bookings = await BookingModel.listByUser(user._id);
+
+    const bookingDetails = await Promise.all(
+        bookings.map(async (booking) => { 
+            const course = await CourseModel.findById(booking.courseId); 
+            return { 
+                id: booking._id, 
+                type: booking.type,
+                status: booking.status,
+                courseName: course ? course.name : "Unknown Course",
+                sessionCount: booking.sessionIds?.length || 0
+            }; 
+        }
+    ));
+
+    res.render(
+        "user_account",
+        {title: "My Account", 
+        user, 
+        bookings: bookingDetails 
+    });
 };
 

@@ -29,8 +29,8 @@ router.get('/logout', logoutUser);
 router.post('/logout', logoutUser);
 
 // Handle Password chanege
-router.get('/change-password', showChangePasswordPage);
-router.post('/change-password', changePassword);
+router.get('/change_password', showChangePasswordPage);
+router.post('/change_password', changePassword);
 
 // Show user account page
 router.get('/user_account', showUserAccountPage);

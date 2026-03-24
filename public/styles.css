@@ -221,3 +221,10 @@ nav a {
 .nav-links a:hover {
   color: #a10505;
 }
+
+.booking-card {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}

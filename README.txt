@@ -23,9 +23,10 @@ List Key:
     ✅ User Login
 
     ✅ Logged in users able to book course
-    🚧 Logged in Users able to view 'My Account' Page
-    🚧 Logged in Users able to change their password
-    ❌ Logged in Users able to view their bookings
+    ✅ Logged in Users able to view 'My Account' Page
+    ✅ Logged in Users able to change their password
+    ✅ Logged in Users able to view their bookings
+    ❌ Logged in Users able to book Sessions rather than a full course.
 
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
