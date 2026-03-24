@@ -39,4 +39,8 @@ export const UserModel = {
   async delete(id) {
     return usersDb.remove({ _id: id });
   },
+
+  async update(id, updates) {
+    return usersDb.update({ _id: id }, { $set: updates });
+  }
 };

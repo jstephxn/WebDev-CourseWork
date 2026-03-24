@@ -10,7 +10,11 @@ import {
     showAllUsersPage,
     showCreateUserPage,
     createUser,
-    deleteUser
+    deleteUser,
+    showEditCoursePage,
+    updateCourse,
+    showEditUserPage,
+    updateUser
 } from "../controllers/adminController.js";
 
 const router = Router();
@@ -19,6 +23,8 @@ const router = Router();
 router.get("/courses/new", showCreateCoursePage);
 router.post("/courses", createCourse);
 router.post("/courses/:id/delete", deleteCourse);
+router.get("/courses/:id/edit", showEditCoursePage);
+router.put("/courses/:id", updateCourse);
 
 // Session management routes
 router.get("/sessions/:id/participants", viewCourseParticipants);

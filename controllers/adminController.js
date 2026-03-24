@@ -136,5 +136,35 @@ export const deleteUser = async (req, res) => {
     res.redirect("/admin/display_users");
 };
 
+export const showEditCoursePage = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+    const course = await CourseModel.findById(req.params.id);
+    if (!course) return res.status(404).send("Course not found");
+    res.render("edit_course", { course, title: "Edit Course" });
+};
+
+export const updateCourse = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+    const courseId = req.params.id;
+    const { title, description, level, type, allowDropIn, startDate, endDate } = req.body;
+    await CourseModel.update(courseId, { title, description, level, type, allowDropIn, startDate, endDate });
+    res.redirect(`/course/${courseId}`);
+};
+
+export const showEditUserPage = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+
+    const user = await UserModel.findById(req.params.id);
+    if (!user) return res.status(404).send("User not found");
+    res.render("edit_user", { user, title: "Edit User" });
+};
+
+export const updateUser = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+    const userId = req.params.id;
+    const { name, email, role } = req.body;
+    await UserModel.update(userId, { name, email, role });
+    res.redirect("/admin/display_users");S
+};
 
 

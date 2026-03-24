@@ -22,9 +22,9 @@
         </button>
       </form>
       {{#isInstructor}}
-        <a href="/admin/courses/{{course._id}}/sessions/new">
-          <button class="btn">Add Session</button>
-        </a>
+        <a href="/admin/courses/{{course._id}}/sessions/new">Add Session</a>
+        
+        <a href="/admin/courses/{{course._id}}/edit" class="btn">Edit Course</a>
       {{/isInstructor}}
     {{/user}}
 

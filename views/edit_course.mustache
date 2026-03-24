@@ -1,0 +1,35 @@
+{{> head}}
+{{> header}}
+
+<h1>Edit Course</h1>
+
+<form method="POST" action="/admin/courses/{{course._id}}/edit">
+
+  <label>Title</label>
+  <input name="title" value="{{course.title}}" required>
+
+  <label>Level</label>
+  <input name="level" value="{{course.level}}" required>
+
+  <label>Course Type</label>
+    <select name="type">
+        <option value="WEEKLY_BLOCK">Weekly Block</option>
+        <option value="WEEKEND_WORKSHOP">Weekend Workshop</option>
+    </select>
+  <label>Description</label>
+  <textarea name="description">{{course.description}}</textarea>
+
+    <label>Allow Drop-in</label>
+  <input type="checkbox" name="allowDropIn" value="true" />
+
+  <label>Start Date</label>
+  <input type="date" name="startDate" />
+
+  <label>End Date</label>
+  <input type="date" name="endDate" />
+  
+  <button type="submit" class="btn primary">Update Course</button>
+
+</form>
+
+{{> footer}}
