@@ -37,6 +37,6 @@ export const UserModel = {
   
   // Delete a user by ID (admin function)
   async delete(id) {
-    return usersDb.delete(id);
+    return usersDb.remove({ _id: id });
   },
 };

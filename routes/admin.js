@@ -15,17 +15,22 @@ import {
 
 const router = Router();
 
+// Course management routes
 router.get("/courses/new", showCreateCoursePage);
 router.post("/courses", createCourse);
 router.post("/courses/:id/delete", deleteCourse);
+
+// Session management routes
 router.get("/sessions/:id/participants", viewCourseParticipants);
 router.post("/sessions/:id/delete", deleteSession);
 router.get("/courses/:courseId/sessions/new", showCreateSessionPage);
 router.post("/courses/:courseId/sessions", createSession);
-router.get("/admin/display_users", showAllUsersPage);
-router.get("/admin/create_user", showCreateUserPage);
-router.post("/admin/create_user", createUser);
-router.post("/admin/:id/delete_user", deleteUser);
+
+// User management routes
+router.get("/display_users", showAllUsersPage);
+router.get("/create_user", showCreateUserPage);
+router.post("/create_user", createUser);
+router.post("/:id/delete_user", deleteUser);
 
 
 export default router;

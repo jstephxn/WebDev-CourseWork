@@ -116,8 +116,8 @@ export const createUser = async (req,res) => {
 };
 
 export const showAllUsersPage = async (req, res) => {
-    const users = await UserModel.findAll().list();
-    res.render("users", { title: "All Users", users });
+    const users = await UserModel.findAll();
+    res.render("display_users", { users });
 };
 
 export const deleteUser = async (req, res) => {
