@@ -76,3 +76,28 @@ export const deleteSession = async (req,res) => {
         res.status(500).json("Failed to delete session");
     }
 };
+
+export const showCreateSessionPage = async (req,res) => {
+    const course = await CourseModel.findById(req.params.courseId);
+    if(!course) return res.status(404).send("Course not found");
+
+    res.render("create_session", {course, title : "Create Session" });
+};
+
+export const createSession = async  (req,res) => {
+    const courseId = req.params.courseId;
+
+    const { startDateTime, endDateTime, capacity } = req.body;
+
+    await SessionModel.create({
+        courseId,
+        startDateTime,
+        endDateTime,
+        capacity: Number(capacity),
+        bookedCount: 0
+    });
+
+    res.redirect(`/courses/${courseId}`);
+};
+
+

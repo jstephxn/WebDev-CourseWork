@@ -4,7 +4,9 @@ import {
     deleteCourse,
     viewCourseParticipants,
     showCreateCoursePage,
-    deleteSession
+    deleteSession,
+    createSession,
+    showCreateSessionPage
 } from "../controllers/adminController.js";
 
 const router = Router();
@@ -14,5 +16,7 @@ router.post("/courses", createCourse);
 router.post("/courses/:id/delete", deleteCourse);
 router.get("/sessions/:id/participants", viewCourseParticipants);
 router.post("/sessions/:id/delete", deleteSession);
+router.get("/courses/:courseId/sessions/new", showCreateSessionPage);
+router.post("/courses/:courseId/sessions", createSession);
 
 export default router;

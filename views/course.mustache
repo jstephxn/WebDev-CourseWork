@@ -21,6 +21,11 @@
           Book full course
         </button>
       </form>
+      {{#isInstructor}}
+        <a href="/admin/courses/{{course._id}}/sessions/new">
+          <button class="btn">Add Session</button>
+        </a>
+      {{/isInstructor}}
     {{/user}}
 
     {{^user}}
@@ -83,7 +88,7 @@
           {{#isInstructor}}
               <td>
                 <a href="/admin/sessions/{{id}}/participants" class="btn">View Participants</a>
-                <form method="POST" action="admin/session/{{id}}/delete" >
+                <form method="POST" action="/admin/sessions/{{id}}/delete" >
                   <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete this session?')">
                     Delete Session
                   </button>

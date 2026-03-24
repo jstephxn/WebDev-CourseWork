@@ -22,5 +22,8 @@ export const SessionModel = {
   },
   async deleteByCourse(courseId) {
     await sessionsDb.remove({ courseId });
+  },
+  async delete(id){
+      await sessionsDb.remove({ _id: id });
   }
 };

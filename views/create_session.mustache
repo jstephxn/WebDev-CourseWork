@@ -1,0 +1,21 @@
+{{> head}}
+{{> header}}
+
+<h1>Add Session to {{course.title}}</h1>
+
+<form method="POST" action="/admin/courses/{{course._id}}/sessions">
+
+  <label>Start Date & Time</label>
+  <input type="datetime-local" name="startDateTime" required>
+
+  <label>End Date & Time</label>
+  <input type="datetime-local" name="endDateTime" required>
+
+  <label>Capacity</label>
+  <input type="number" name="capacity" required>
+
+  <button type="submit">Create Session</button>
+
+</form>
+
+{{> footer}}
