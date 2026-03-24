@@ -10,6 +10,12 @@ After running the command above, in the same terminal run,
 To stop running the website select the terminal and press ' CNTRL + C ' and the site will terminate.
         
 
+List Key:
+
+    ❌ - Incomplete
+    🚧 - Currently Working 
+    ✅ - Complete
+
 
 📖 Features Implemented:
     ✅ User registration
@@ -42,4 +48,4 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
         ❌ Refine User Creation
         ❌ Refine User Editing 
 
-            
+          
