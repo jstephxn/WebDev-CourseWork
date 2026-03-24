@@ -17,8 +17,11 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
     ✅ Logged in user able to book course
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
+    ❌ Admins able to Update Courses
     ✅ Admins (Instructors) able to delete courses
-    - Admins (Instructors) able to delete sessions (NEEDS TESTED)
+    ✅ Admins (Instructors) able to delete sessions
     ✅ Admins (Instructors) able to view a list of participants in the sessions
-    - Admins (Instructors) able to add users (NOT YET IMPLEMENTED)
-    - Admins (Instructors) able to delete users (NOT YET IMPLEMENTED)
+    ❌ Admins (Instructors) able to add users (NOT YET IMPLEMENTED)
+    ❌ Admins (Instructors) able to delete users (NOT YET IMPLEMENTED)
+    ❌ Admins able to Update User (Name, Password)
+    

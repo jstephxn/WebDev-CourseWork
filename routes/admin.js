@@ -6,7 +6,11 @@ import {
     showCreateCoursePage,
     deleteSession,
     createSession,
-    showCreateSessionPage
+    showCreateSessionPage,
+    showAllUsersPage,
+    showCreateUserPage,
+    createUser,
+    deleteUser
 } from "../controllers/adminController.js";
 
 const router = Router();
@@ -18,5 +22,10 @@ router.get("/sessions/:id/participants", viewCourseParticipants);
 router.post("/sessions/:id/delete", deleteSession);
 router.get("/courses/:courseId/sessions/new", showCreateSessionPage);
 router.post("/courses/:courseId/sessions", createSession);
+router.get("/admin/display_users", showAllUsersPage);
+router.get("/admin/create_user", showCreateUserPage);
+router.post("/admin/create_user", createUser);
+router.post("/admin/:id/delete_user", deleteUser);
+
 
 export default router;

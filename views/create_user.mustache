@@ -1,0 +1,27 @@
+{{> head}}
+{{> header}}
+
+<h1>Create User</h1>
+
+<form method="POST" action="/admin/users">
+
+  <label>Name</label>
+  <input name="name" required>
+
+  <label>Email</label>
+  <input name="email" required>
+
+  <label>Role</label>
+  <select name="role">
+    <option value="student">Student</option>
+    <option value="instructor">Instructor</option>
+  </select>
+
+  <label>Password</label>
+  <input name="password" required> 
+
+  <button type="submit">Create User</button>
+
+</form>
+
+{{> footer}}

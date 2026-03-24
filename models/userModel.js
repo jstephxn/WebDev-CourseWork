@@ -29,4 +29,14 @@ export const UserModel = {
   async findById(id) {
     return usersDb.findOne({ _id: id });
   },
+
+  // Return all users from the database (for admin display)
+  async findAll() {
+    return usersDb.find({});
+  },
+  
+  // Delete a user by ID (admin function)
+  async delete(id) {
+    return usersDb.delete(id);
+  },
 };

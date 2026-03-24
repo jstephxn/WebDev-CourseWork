@@ -100,4 +100,31 @@ export const createSession = async  (req,res) => {
     res.redirect(`/courses/${courseId}`);
 };
 
+export const showCreateUserPage = (req, res) => {
+    res.render("create_user", { title: "Create User" });
+};
+
+export const createUser = async (req,res) => {
+    const { name, email, password, role } = req.body;
+    await UserModel.create({
+        name,
+        email,
+        password,
+        role
+    });
+    res.redirect("/admin/display_users");
+};
+
+export const showAllUsersPage = async (req, res) => {
+    const users = await UserModel.findAll().list();
+    res.render("users", { title: "All Users", users });
+};
+
+export const deleteUser = async (req, res) => {
+    const userId = req.params.id;
+    await UserModel.delete(userId);
+    res.redirect("/admin/display_users");
+};
+
+
 
