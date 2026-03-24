@@ -17,18 +17,17 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
     ✅ Logged in user able to book course
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
-    ❌ Admins able to Update Courses
+    ✅ Admins able to Update Courses
     ✅ Admins (Instructors) able to delete courses
     ✅ Admins (Instructors) able to delete sessions
     ✅ Admins (Instructors) able to view a list of participants in the sessions
     ✅ Admins (Instructors) able to add users 
     ✅ Admins (Instructors) able to delete users
-    ❌ Admins able to Update User (Name, Password, role)
+    ✅ Admins able to Update User (Name, Password, role)
 
     Visual Edits:
         ❌ Add images
-        ❌ Update Navbar
+        ❌ Update Navbar to contain a logo and better link layout
         ❌ Refine Homepage
-        ❌ Update CSS to add different buttons 
-        ❌ 
-    
+        ❌ Update CSS to add different buttons
+            
