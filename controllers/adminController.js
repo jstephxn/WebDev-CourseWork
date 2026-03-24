@@ -5,6 +5,7 @@ import { UserModel } from "../models/userModel.js";
 
 // Create a new course
 export const createCourse = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
   try {
     const course = await CourseModel.create({
         title: req.body.title,
@@ -31,6 +32,7 @@ export const showCreateCoursePage = (req,res) => {
 
 // Delete a course and its sessions
 export const deleteCourse =  (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
    CourseModel.delete(req.params.id);
    SessionModel.deleteByCourse(req.params.id);
   res.redirect("/courses");
@@ -38,6 +40,7 @@ export const deleteCourse =  (req, res) => {
 
 // View Course participants (bookings)
 export const viewCourseParticipants = async (req, res) => { 
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     try{
         if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to view participants."); }
 
@@ -68,6 +71,7 @@ export const viewCourseParticipants = async (req, res) => {
 };
 
 export const deleteSession = async (req,res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     try {
         await SessionModel.delete(req.params.id);
         res.redirect("/courses");
@@ -78,6 +82,7 @@ export const deleteSession = async (req,res) => {
 };
 
 export const showCreateSessionPage = async (req,res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     const course = await CourseModel.findById(req.params.courseId);
     if(!course) return res.status(404).send("Course not found");
 
@@ -85,6 +90,7 @@ export const showCreateSessionPage = async (req,res) => {
 };
 
 export const createSession = async  (req,res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     const courseId = req.params.courseId;
 
     const { startDateTime, endDateTime, capacity } = req.body;
@@ -101,10 +107,12 @@ export const createSession = async  (req,res) => {
 };
 
 export const showCreateUserPage = (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     res.render("create_user", { title: "Create User" });
 };
 
 export const createUser = async (req,res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     const { name, email, password, role } = req.body;
     await UserModel.create({
         name,
@@ -116,11 +124,13 @@ export const createUser = async (req,res) => {
 };
 
 export const showAllUsersPage = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     const users = await UserModel.findAll();
     res.render("display_users", { users });
 };
 
 export const deleteUser = async (req, res) => {
+    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     const userId = req.params.id;
     await UserModel.delete(userId);
     res.redirect("/admin/display_users");
