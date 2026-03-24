@@ -66,3 +66,13 @@ export const viewCourseParticipants = async (req, res) => {
         res.status(500).json("Failed to retrieve participants");
     }
 };
+
+export const deleteSession = async (req,res) => {
+    try {
+        await SessionModel.delete(req.params.id);
+        res.redirect("/courses");
+    } catch (err) {
+        console.error(err);
+        res.status(500).json("Failed to delete session");
+    }
+};
