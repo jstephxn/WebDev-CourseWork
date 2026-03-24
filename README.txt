@@ -12,9 +12,9 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
 
 List Key:
 
-    ❌ - Incomplete
-    🚧 - Currently Working 
-    ✅ - Complete
+    ❌ - Not implemented
+    🚧 - Implemented but needs testing
+    ✅ - Implemented and working
 
 
 📖 Features Implemented:
