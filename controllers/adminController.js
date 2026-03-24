@@ -33,7 +33,7 @@ export const showCreateCoursePage = (req,res) => {
 export const deleteCourse =  (req, res) => {
    CourseModel.delete(req.params.id);
    SessionModel.deleteByCourse(req.params.id);
-  res.json({ message: "Course and its sessions deleted" });
+  res.redirect("/courses");
 };
 
 // View Course participants (bookings)

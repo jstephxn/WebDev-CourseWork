@@ -12,13 +12,14 @@ To stop running the website select the terminal and press ' CNTRL + C ' and the 
 
 
 Features Implemented:
-    - User registration
-    - User Login
-    - Logged in user able to book course
-    - Admins (Instructors) able to add new courses (Need to add sessions also here -- Implement ASAP)
-    - Admins (Instructors) able to delete courses (NOT YET IMPLEMENTED)
+    ✅ User registration
+    ✅ User Login
+    ✅ Logged in user able to book course
+    ✅ Admins (Instructors) able to add new courses
+    - Admins (Instructors) can add sessions to courses
+    ✅ Admins (Instructors) able to delete courses
     - Admins (Instructors) able to add new sessions (NOT YET IMPLEMENTED)
     - Admins (Instructors) able to delete sessions (NOT YET IMPLEMENTED)
-    - Admins (Instructors) able to view a list of participants in the sessions
+    ✅ Admins (Instructors) able to view a list of participants in the sessions
     - Admins (Instructors) able to add users (NOT YET IMPLEMENTED)
     - Admins (Instructors) able to delete users (NOT YET IMPLEMENTED)
