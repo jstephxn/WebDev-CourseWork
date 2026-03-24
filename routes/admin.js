@@ -10,6 +10,7 @@ const router = Router();
 
 router.get("/courses/new", showCreateCoursePage);
 router.post("/courses", createCourse);
+router.get("/courses/:id/delete", deleteCourse);
 router.post("/courses/:id/delete", deleteCourse);
 router.get("/sessions/:id/participants", viewCourseParticipants);
 

@@ -12,7 +12,7 @@
     </label>
 
     <button class="btn" type="submit">Apply</button>
-    /coursesReset</a>
+    <a href="/coursesReset" class="btn">Reset</a>
   </form>
 </section>
 
@@ -27,6 +27,11 @@
     <p class="muted">Dates: {{startDate}} – {{endDate}}</p>
     <p class="muted">Next session: {{nextSession}} • Sessions: {{sessionsCount}}</p>
     <p><a href="/courses/{{id}}" class="btn primary">View &amp; Book</a></p>
+    {{#isInstructor}}
+    <form method="POST" action="/admin/{{id}}/delete">
+    <button type="submit">Delete Course</button>
+    </form>
+    {{/isInstructor}}
   </article>
   {{/courses}}
 
@@ -34,7 +39,7 @@
     <p>No courses match your filters.</p>
   {{/courses}}
 </div>
-<!-- 
+
 <nav class="pagination">
   {{#pagination.hasPrev}}
     {{pagination.prevLink}}← Previous</a>
@@ -45,5 +50,5 @@
   {{#pagination.hasNext}}
     {{pagination.nextLink}}Next →</a>
   {{/pagination.hasNext}}
-</nav> -->
+</nav>
 {{> footer}}

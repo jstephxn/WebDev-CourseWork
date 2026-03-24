@@ -15,7 +15,7 @@ Features Implemented:
     - User registration
     - User Login
     - Logged in user able to book course
-    - Admins (Instructors) able to add new courses
+    - Admins (Instructors) able to add new courses (Need to add sessions also here -- Implement ASAP)
     - Admins (Instructors) able to delete courses (NOT YET IMPLEMENTED)
     - Admins (Instructors) able to add new sessions (NOT YET IMPLEMENTED)
     - Admins (Instructors) able to delete sessions (NOT YET IMPLEMENTED)

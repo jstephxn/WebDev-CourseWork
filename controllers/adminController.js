@@ -30,9 +30,9 @@ export const showCreateCoursePage = (req,res) => {
 };
 
 // Delete a course and its sessions
-export const deleteCourse = async (req, res) => {
-  await CourseModel.delete(req.params.id);
-  await SessionModel.deleteByCourse(req.params.id);
+export const deleteCourse =  (req, res) => {
+   CourseModel.delete(req.params.id);
+   SessionModel.deleteByCourse(req.params.id);
   res.json({ message: "Course and its sessions deleted" });
 };
 
