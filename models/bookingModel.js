@@ -10,6 +10,11 @@ export const BookingModel = {
   async findById(id) {
     return bookingsDb.findOne({ _id: id });
   },
+
+  async findByCourseId(courseId){
+    return bookingsDb.find({courseId})
+  },
+
   async findBySessionId(sessionId) {
     return bookingsDb.find({ 
       sessionIds: { $in: [sessionId] } 

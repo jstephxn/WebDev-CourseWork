@@ -214,4 +214,48 @@ export const updateUser = async (req, res) => {
   res.redirect("/admin/display_users");
 };
 
+export const exportCourseCSV = async (req,res) => {
+    try{
+        const courseId = req.params.id;
 
+        const course = await CourseModel.findById(courseId);
+        if(!course){
+            return res.status(404).send("Course not found.");
+        }
+        
+        // Get all bookings for the course
+        const bookings = await BookingModel.findByCourseId(courseId);
+
+        if(!bookings || bookings.length === 0){
+            return res.send("No bookings for this course.")
+        }
+
+        // Get users
+        const users = await Promise.all(
+            bookings.map(b => UserModel.findById(b.userId))
+        );
+
+        // Build CSV
+        let csv = "Name,Email,Booking Type, Status, Sessions\n";
+
+        users.forEach((user, i) => {
+            if (!user) return;
+
+            const booking = bookings[i];
+
+            csv += `"${user.name}","${user.email}","${booking.type}","${booking.status}", "${booking.sessionIds.length}"\n`;
+        });
+             //  Set headers for download
+             res.setHeader("Content-Type", "text/csv");
+             res.setHeader(
+                "Content-Disposition",
+                `attachment; filename="${course.title}_participants.csv"`
+             );
+
+             res.send(csv)
+
+    } catch (err){
+        console.error(err);
+        res.status(500).send("Failed to export CSV");
+    }
+};

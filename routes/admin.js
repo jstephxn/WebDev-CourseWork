@@ -13,7 +13,8 @@ import {
     showEditCoursePage,
     updateCourse,
     showEditUserPage,
-    updateUser
+    updateUser,
+    exportCourseCSV
 } from "../controllers/adminController.js";
 import { requireInstructor } from '../middlewares/auth.js'
 
@@ -31,11 +32,10 @@ router.post("/courses/:id/update", requireInstructor, updateCourse);
 router.get("/sessions/:id/participants", requireInstructor, viewCourseParticipants);
 router.post("/sessions/:id/delete", requireInstructor, deleteSession);
 router.post("/courses/:courseId/sessions", requireInstructor, createSession);
+router.get("/courses/:id/export", requireInstructor, exportCourseCSV);
 
 // No long in use as we are now creating sessions through the course page
 // router.get("/courses/:courseId/sessions/new", showCreateSessionPage);
-
-
 
 // User management routes
 router.get("/display_users", requireInstructor, showAllUsersPage);

@@ -24,7 +24,7 @@
       {{#isInstructor}}
         <!-- Changed from being taken to a new page (create_session.mustache) to add a new session to the session creation to be at the bottom of the table -->
         <!-- <a href="/admin/courses/{{course._id}}/sessions/new">Add Session</a> -->
-        
+        <a href="/admin/courses/{{course._id}}/export" class="btn"> Download Participants (CSV) </a>
         <a href="/admin/courses/{{course._id}}/edit" class="btn">Edit Course</a>
       {{/isInstructor}}
     {{/user}}

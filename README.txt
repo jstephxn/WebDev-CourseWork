@@ -27,7 +27,9 @@ List Key:
     ✅ Logged in Users able to view 'My Account' Page
     ✅ Logged in Users able to change their password
     ✅ Logged in Users able to view their bookings
+    ❌ Logged in users able to view thier session details in their bookings
     ✅ Logged in Users able to book Sessions rather than a full course.
+    ❌ Logged in Users able to cancel their booking
 
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
@@ -39,13 +41,13 @@ List Key:
     ✅ Admins (Instructors) able to delete users
     ✅ Admins (Instructors) able to Update User (Name, role)
     ✅ Admins (Instructors) can change a Users Password
-    ❌ Admins (Instructors) can download a csv of course bookings
+    ✅ Admins (Instructors) can download a csv of course bookings
 
     ✅ Fix Courses Filter
     ✅ Email Formatting check for registration
     ✅ Password Validation
     ✅ Add a show password button to login and register
-    ❌ Prevent double booking
+    🚧 Prevent double booking (1 user can book 1 session or course once)
     ✅ Require Instructor middleware so admin urls are only assesible to logged in users with the role 'instructor'
     ✅ Refactor session creation to be under the course rather than seperate page
     ✅ Fix Session Booking (Courses always display Drop ins disabled)
