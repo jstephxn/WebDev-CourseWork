@@ -10,6 +10,7 @@ import {
     showUserAccountPage
 } from '../controllers/authController.js';
 
+
 const router = Router();
 
 // Show login page

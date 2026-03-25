@@ -46,7 +46,7 @@ List Key:
     ✅ Password Validation
     ✅ Add a show password button to login and register
     ❌ Prevent double booking
-    ❌ Authorisation Middleware
+    ✅ Require Instructor middleware so admin urls are only assesible to logged in users with the role 'instructor'
     ✅ Refactor session creation to be under the course rather than seperate page
     ✅ Fix Session Booking (Courses always display Drop ins disabled)
     🚧 Waitlist for booking courses or sessions

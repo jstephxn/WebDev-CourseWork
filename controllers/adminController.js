@@ -4,6 +4,8 @@ import { BookingModel } from "../models/bookingModel.js";
 import { UserModel } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 
+
+
 // Create a new course
 export const createCourse = async (req, res) => {
     if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
@@ -154,6 +156,7 @@ export const updateCourse = async (req, res) => {
 };
 
 export const showEditUserPage = async (req, res) => {
+    // Only allow if user is an instructor
     if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
 
     const user = await UserModel.findById(req.params.id);
