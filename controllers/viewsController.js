@@ -60,6 +60,27 @@ export const courseDetailPage = async (req, res, next) => {
         .status(404)
         .render("error", { title: "Not found", message: "Course not found" });
 
+    let isCourseBooked = false;
+    let bookedSessionIds = [];
+
+    if (req.session.user) {
+    const bookingsRaw = await BookingModel.find({
+      userId: req.session.user._id
+    });
+
+    const bookings = Array.isArray(bookingsRaw) ? bookingsRaw : [];
+
+    // ✅ Course booking check
+    isCourseBooked = bookings.some(
+      b => b.type === "COURSE" && String(b.courseId) === String(courseId)
+    );
+
+    // ✅ Session bookings
+    bookedSessionIds = bookings
+      .filter(b => b.type === "SESSION")
+      .flatMap(b => b.sessionIds || []);
+    }
+
     const sessions = await SessionModel.listByCourse(courseId);
     const rows = sessions.map((s) => ({
       id: s._id,
@@ -69,8 +90,10 @@ export const courseDetailPage = async (req, res, next) => {
       booked: s.bookedCount ?? 0,
       allowDropIn: course.allowDropIn,
       remaining: Math.max(0, (s.capacity ?? 0) - (s.bookedCount ?? 0)),
-      isFull: (s.bookedCount ?? 0) >= (s.capacity ?? 0)
+      isFull: (s.bookedCount ?? 0) >= (s.capacity ?? 0),
+      isBooked: bookedSessionIds.includes(s._id) || isCourseBooked
     }));
+
 
     res.render("course", {
       title: course.title,
@@ -84,6 +107,7 @@ export const courseDetailPage = async (req, res, next) => {
         startDate: course.startDate ? fmtDateOnly(course.startDate) : "",
         endDate: course.endDate ? fmtDateOnly(course.endDate) : "",
         description: course.description,
+        isBooked: isCourseBooked,
       },
       sessions: rows,
     });

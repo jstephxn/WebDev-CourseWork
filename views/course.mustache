@@ -16,11 +16,16 @@
   <section>
     <h2>Book the full course</h2>
     {{#user}}
+      {{#course.isBooked}}
+        <button disabled>Already Booked<button>
+      {{/course.isBooked}}
+      {{^course.isBooked}}
       <form action="/courses/{{course._id}}/book" method="POST">
         <button class="btn primary" type="submit">
           Book full course
         </button>
       </form>
+      {{/course.isBooked}}
       {{#isInstructor}}
         <!-- Changed from being taken to a new page (create_session.mustache) to add a new session to the session creation to be at the bottom of the table -->
         <!-- <a href="/admin/courses/{{course._id}}/sessions/new">Add Session</a> -->
@@ -68,12 +73,16 @@
             {{#allowDropIn}}
 
               {{#user}}
+              {{#isBooked}}
+                <span class="muted">Session Booked<span>
+              {{/isBooked}}
+              {{^isBooked}}
                 <form action="/sessions/{{id}}/book" method="POST" >
                   <button class="btn" type="submit" {{#isFull}}disabled{{/isFull}}>
                     Book this session
                   </button>
                 </form>
-    
+              {{/isBooked}}
               {{/user}}
 
               {{^user}}
