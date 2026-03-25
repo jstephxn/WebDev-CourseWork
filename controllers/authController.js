@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import {UserModel} from "../models/userModel.js";
 import {BookingModel} from "../models/bookingModel.js";
 import {CourseModel} from "../models/courseModel.js";
+import {SessionModel} from "../models/sessionModel.js"
 
 // Show login page
 export const showLoginPage = (req, res) => {
@@ -139,31 +140,47 @@ export const changePassword = async (req, res) => {
 };
 
 // Show user account page
-export const showUserAccountPage = async (req, res) => {
+export const showUserAccountPage = async (req, res, next) => {
+  try {
     const user = req.session.user;
-    if (!user) { return res.redirect("/auth/login"); }
+    if (!user) return res.redirect("/login");
 
-    // Get users bookings from the database
-    const bookings = await BookingModel.listByUser(user._id);
+    const bookings = await BookingModel.find({ userId: user._id });
 
-    const bookingDetails = await Promise.all(
-        bookings.map(async (booking) => { 
-            const course = await CourseModel.findById(booking.courseId); 
-            return { 
-                id: booking._id, 
-                type: booking.type,
-                status: booking.status,
-                courseName: course ? course.title : "Unknown Course",
-                sessionCount: booking.sessionIds?.length || 0
-            }; 
-        }
-    ));
+    const enrichedBookings = await Promise.all(
+      bookings.map(async (b) => {
+        const course = await CourseModel.findById(b.courseId);
 
-    res.render(
-        "user_account",
-        {title: "My Account", 
-        user, 
-        bookings: bookingDetails 
+        const sessions = await Promise.all(
+          (b.sessionIds || []).map(async (sid) => {
+            const s = await SessionModel.findById(sid);
+            return s
+              ? {
+                  start: new Date(s.startDateTime).toLocaleString(),
+                  end: new Date(s.endDateTime).toLocaleString(),
+                }
+              : null;
+          })
+        );
+
+        return {
+          id: b._id,
+          type: b.type,
+          status: b.status,
+          courseTitle: course?.title || "Unknown",
+          sessions: sessions.filter(Boolean),
+        };
+      })
+    );
+
+    res.render("user_account", {
+      title: "My Account",
+      user,
+      bookings: enrichedBookings,
     });
+
+  } catch (err) {
+    next(err);
+  }
 };
 

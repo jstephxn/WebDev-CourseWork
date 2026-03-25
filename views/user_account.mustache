@@ -3,31 +3,59 @@
 
 <h1> Hello {{user.name}}!</h1>
 
-<section>
-    <h2>Your Details:</h2>
-    <p>Name: {{user.name}}</p>
-    <p>Email: {{user.email}}</p>
-</section>
+<div class="account-layout">
+    <h2>Account Details</h2>
+    <p><strong>Email: </strong> {{user.email}}</p>
+    <a href="/auth/change_password" class="btn">Update Password</a>
+</div>
+    <section class="bookings-section">
+  <h2>My Bookings</h2>
 
-<section>
-    <a href="/auth/change_password" class="btn primary">Update Password</a>
-</section>
-
-<section>
-<h2> My Bookings </h2>
-
-{{#bookings}}
+  {{#bookings}}
     <div class="booking-card">
-        <p><strong>Course:</strong> {{courseName}}</p>
-        <p><strong>Type:</strong> {{type}}</p>
-        <p><strong>Status:</strong> {{status}}</p>
-        <p><strong>Sessions:</strong> {{sessionCount}} </p>
+
+      <!-- HEADER -->
+      <div class="booking-header">
+        <h3>{{courseTitle}}</h3>
+        <span class="badge {{status}}">{{status}}</span>
+      </div>
+
+      <!-- TYPE -->
+      <p class="booking-type">
+        {{type}} booking
+      </p>
+
+      <!-- SESSIONS -->
+      {{#sessions.length}}
+        <div class="sessions">
+          <strong>Sessions:</strong>
+          <ul>
+            {{#sessions}}
+              <li>{{start}} → {{end}}</li>
+            {{/sessions}}
+          </ul>
+        </div>
+      {{/sessions.length}}
+
+    {{#isCancelled}}
+        <span class="muted">Cancelled</span>
+    {{/isCancelled}}
+
+    {{^isCancelled}}
+      <form action="/bookings/{{id}}/cancel" method="POST">
+        <button class="btn danger" type="submit">
+          Cancel Booking
+        </button>
+      </form>
+    {{/isCancelled}}
+
     </div>
-{{/bookings}}
+  {{/bookings}}
 
-{{^bookings}}
-
-{{/bookings}}
-
+  {{^bookings}}
+    <p class="muted">You have no bookings yet.</p>
+  {{/bookings}}
+</section>
+</div>
 
 {{> footer}}

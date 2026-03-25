@@ -17,7 +17,7 @@
     <h2>Book the full course</h2>
     {{#user}}
       {{#course.isBooked}}
-        <button disabled>Already Booked<button>
+        <button class="btn" disabled>Already Booked<button>
       {{/course.isBooked}}
       {{^course.isBooked}}
       <form action="/courses/{{course._id}}/book" method="POST">
