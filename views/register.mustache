@@ -4,16 +4,56 @@
 <h1>Register</h1>
 
 <form method="POST" action="/auth/register">
-  <label name="name">Name:</label>
-  <input name="name" placeholder="Name" />
+  <label name="name">Name:
+    <input name="name" placeholder="Name" value="{{name}}" required/>
+  </label>
   <br />
-  <label name="email">Email:</label>
-  <input name="email" placeholder="Email" type="Email"/>
+  <label name="email">Email:
+    <input name="email" placeholder="Email" type="Email" value="{{email}}" required/>
+  </label>
   <br />
-  <label name="password">Password</label>
-  <input name="password" type="password" placeholder="Password" />
+
+  <label name="password">Password
+    <input name="password" type="password" id="password" placeholder="Password" value="{{password}}" required/>
+  </label>
+  <small id="passwordHint"> Must be at least 6 characters and include one number, one uppercase character, and one lowercase character. </small>
   <br />
+  <label> Confirm Password
+    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="confirmPassword" required />
+  </label>
+
+  <label style="display:flex; align-items:center; gap:6px;"> Show Password
+    <input type="checkbox" onclick="togglePassword()" />
+  </label>
+  <br />
+  {{#error}}
+    <p class="error">{{error}}
+  {{/error}}
   <button class="btn primary">Register</button>
 </form>
+
+<script>
+
+function togglePassword(){
+  const pw = document.getElementById("password");
+  const cpw = document.getElementById("confirmPassword");
+
+  const type = pw.type === "password" ? "text" : "password";
+  pw.type = type;
+  cpw.type = type;
+}
+
+document.getElementById("password").addEventListener("input", function () {  
+  const value = this.value;
+  const hint = document.getElementById("passwordHint");
+
+  if (value.length >= 6 && /\d/.test(value)) {
+    hint.style.color = "green";
+  } else {
+    hint.style.color = "red";
+  }
+  });
+</script>
+
 
 {{> footer}}

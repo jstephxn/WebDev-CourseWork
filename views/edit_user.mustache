@@ -11,6 +11,12 @@
   <label>Email</label>
   <input name="email" value="{{user.email}}" required>
 
+  <label>Password (Leave blank to keep current password)</label>#
+  <input name="password" type="password"/>
+
+  <label> Confirm Password </label>
+  <input name="confirmPassword" />
+
   <label>Role</label>
   <select name="role">
     <option value="student">Student</option>
@@ -22,3 +28,14 @@
 </form>
 
 {{> footer}}
+
+<script>
+function togglePassword(){
+  const pw = document.getElementById("password");
+  const cpw = document.getElementById("confirmPassword");
+
+  const type = pw.type === "password" ? "text" : "password";
+  pw.type = type;
+  cpw.type = type;
+}
+</script?

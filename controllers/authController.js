@@ -15,12 +15,35 @@ export const showRegisterPage = (req, res) => {
 
 // Handle registration form submission
 export const registerUser = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, password, confirmPassword } = req.body;
+    const email = req.body.email.trim().toLowerCase();
+
+    // Basic validation
+    if (!name || !email || !password) {
+        return res.render("register", { error: "All fields are required.", name, email, password: "" });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.render("register", { error: "Please enter a valid email address.", name, email, password: "" });
+    }
 
     // Check if user already exists
     const existingUser = await UserModel.findByEmail({ where: { email } });
     if (existingUser) {
-        return res.status(400).send("Email already taken.");
+        return res.render("register", { error: "Email is already registered.", name, email, password: "" });
+    }
+
+    // Check passwords match
+    if (password !== confirmPassword) {
+        return res.render("register", { error: "Passwords do not match.", name, email });
+    }
+
+    // Password strength validation (at least 8 characters, one uppercase, one lowercase, one number)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+        return res.render("register", { error: "Password must be at least 8 characters long and include uppercase, lowercase letters, and a number.", name, email, password: "" });
     }
 
     // Hash the password
@@ -79,14 +102,28 @@ export const changePassword = async (req, res) => {
     const user = req.session.user;
     if (!user) { return res.redirect("/auth/login"); }
 
+    const { currentPassword, newPassword, confirmPassword } = req.body;
+
+    
+
     // Get a fresh user from the database
     const freshUser = await UserModel.findById(user._id);
     
     // Check if current password is correct
-    const isMatch = await bcrypt.compare(req.body.currentPassword, freshUser.password);
+    const isMatch = await bcrypt.compare(currentPassword, freshUser.password);
 
     if (!isMatch) {
-        return res.send("Current password is incorrect.");
+        return res.error("Current password is incorrect.");
+    }
+    // Check passwords match
+    if (newPassword !== confirmPassword) {
+        return res.render("change_password", { error: "Passwords do not match.", name, email });
+    }
+
+    // Password strength validation (at least 8 characters, one uppercase, one lowercase, one number)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+        return res.render("change_password", { error: "Password must be at least 8 characters long and include uppercase, lowercase letters, and a number.", name, email, password: "" });
     }
 
     // Hash the new password

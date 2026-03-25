@@ -142,7 +142,7 @@ nav a {
 .banner {
     padding-left:5%;
     padding-right:5%;
-    
+
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -231,4 +231,14 @@ nav a {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 6px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+small {
+    color: #666;
+    font-size: 12px;
 }

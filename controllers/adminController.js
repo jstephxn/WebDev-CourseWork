@@ -163,7 +163,7 @@ export const showEditUserPage = async (req, res) => {
 export const updateUser = async (req, res) => {
     if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
     const userId = req.params.id;
-    const { name, email, role } = req.body;
+    const { name, email, password, role } = req.body;
     await UserModel.update(userId, { name, email, role });
     res.redirect("/admin/display_users");
 };

@@ -42,7 +42,10 @@ List Key:
     ❌ Admins (Instructors) can download a csv of course bookings
 
     ✅ Fix Courses Filter
-    🚧 Email Formatting check for registration
+    ✅ Email Formatting check for registration
+    ✅ Password Validation in registration
+    🚧 Password Validation when Updating the Password
+    ✅ Add a show password button to login and register
     ❌ Prevent double booking
     ❌ Authorisation Middleware
     ✅ Refactor session creation to be under the course rather than seperate page
