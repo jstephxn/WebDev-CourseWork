@@ -2,6 +2,7 @@ import {CourseModel} from "../models/courseModel.js";
 import { SessionModel } from "../models/sessionModel.js";
 import { BookingModel } from "../models/bookingModel.js";
 import { UserModel } from "../models/userModel.js";
+import bcrypt from "bcrypt";
 
 // Create a new course
 export const createCourse = async (req, res) => {
@@ -161,11 +162,53 @@ export const showEditUserPage = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
-    const userId = req.params.id;
-    const { name, email, password, role } = req.body;
-    await UserModel.update(userId, { name, email, role });
-    res.redirect("/admin/display_users");
+  const { id } = req.params;
+  const { name, email, password, confirmPassword, role } = req.body;
+
+  const user = await UserModel.findById(id);
+
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.render("edit_user", {
+      error: "Invalid email format",
+      user
+    });
+  }
+
+  let updateData = {
+    name,
+    email,
+    role
+  };
+
+  // Only update password if provided
+  if (password) {
+    if (password !== confirmPassword) {
+      return res.render("edit_user", {
+        error: "Passwords do not match",
+        user
+      });
+    }
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.render("edit_user", {
+        error: "Password must be at least 6 characters and include a number",
+        user
+      });
+    }
+
+    updateData.password = await bcrypt.hash(password, 10);
+  }
+
+  await UserModel.update(id, updateData);
+
+  res.redirect("/admin/display_users");
 };
 
 

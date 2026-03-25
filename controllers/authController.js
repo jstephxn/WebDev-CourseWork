@@ -117,17 +117,17 @@ export const changePassword = async (req, res) => {
     }
     // Check passwords match
     if (newPassword !== confirmPassword) {
-        return res.render("change_password", { error: "Passwords do not match.", name, email });
+        return res.render("change_password", { error: "Passwords do not match."});
     }
 
     // Password strength validation (at least 8 characters, one uppercase, one lowercase, one number)
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    if (!passwordRegex.test(password)) {
-        return res.render("change_password", { error: "Password must be at least 8 characters long and include uppercase, lowercase letters, and a number.", name, email, password: "" });
+    if (!passwordRegex.test(newPassword)) {
+        return res.render("change_password", { error: "Password must be at least 8 characters long and include uppercase, lowercase letters, and a number."});
     }
 
     // Hash the new password
-    const hashedNewPassword = await bcrypt.hash(req.body.newPassword, 10);
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
 
     // Update the user's password in the database
     await UserModel.updatePassword(user._id, hashedNewPassword);

@@ -38,13 +38,12 @@ List Key:
     ✅ Admins (Instructors) able to add users 
     ✅ Admins (Instructors) able to delete users
     ✅ Admins (Instructors) able to Update User (Name, role)
-    ❌ Admins (Instructors) can change a Users Password
+    ✅ Admins (Instructors) can change a Users Password
     ❌ Admins (Instructors) can download a csv of course bookings
 
     ✅ Fix Courses Filter
     ✅ Email Formatting check for registration
-    ✅ Password Validation in registration
-    🚧 Password Validation when Updating the Password
+    ✅ Password Validation
     ✅ Add a show password button to login and register
     ❌ Prevent double booking
     ❌ Authorisation Middleware
