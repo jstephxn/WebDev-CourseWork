@@ -10,5 +10,6 @@ router.post('/courses/:id/book', bookCourse);
 router.post('/session', bookSession);
 router.delete('/:bookingId', cancelBooking);
 router.post('/sessions/:id/book', bookSession);
+router.post('/:bookingId/cancel', cancelBooking)
 
 export default router;

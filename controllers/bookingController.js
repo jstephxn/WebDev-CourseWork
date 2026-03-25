@@ -39,20 +39,41 @@ export const bookSession = async (req, res) => {
 
 export const cancelBooking = async (req, res) => {
   try {
-    const { bookingId } = req.params;
-    const booking = await BookingModel.findById(bookingId);
-    if (!booking) return res.status(404).json({ error: "Booking not found" });
-    if (booking.status === "CANCELLED") return res.json({ booking });
+    const user = req.session.user;
+    if (!user) return res.status(401).send("Not logged in");
 
+    const { bookingId } = req.params;
+
+    const booking = await BookingModel.findById(bookingId);
+    if (!booking) {
+      return res.status(404).send("Booking not found");
+    }
+
+    // SECURITY CHECK
+    if (booking.userId !== user._id) {
+      return res.status(403).send("Not allowed");
+    }
+
+    // If already cancelled, just return
+    if (booking.status === "CANCELLED") {
+      return res.redirect("/auth/account");
+    }
+
+    // Update capacity ONLY if confirmed
     if (booking.status === "CONFIRMED") {
       for (const sid of booking.sessionIds) {
         await SessionModel.incrementBookedCount(sid, -1);
       }
     }
-    const updated = await BookingModel.cancel(bookingId);
-    res.json({ booking: updated });
+
+    // Mark as cancelled
+    await BookingModel.cancel(bookingId);
+
+    // Redirect back to account page
+    res.redirect("/auth/user_account");
+
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to cancel booking" });
+    res.status(500).send("Failed to cancel booking");
   }
 };

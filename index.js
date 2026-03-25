@@ -63,7 +63,7 @@ app.use('/auth', authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/sessions", sessionRoutes);
-app.use("/api/bookings", bookingRoutes);
+app.use("/bookings", bookingRoutes);
 
 // SSR view routes
 app.use("/", viewRoutes);
