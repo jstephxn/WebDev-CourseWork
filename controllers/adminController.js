@@ -81,13 +81,14 @@ export const deleteSession = async (req,res) => {
     }
 };
 
-export const showCreateSessionPage = async (req,res) => {
-    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
-    const course = await CourseModel.findById(req.params.courseId);
-    if(!course) return res.status(404).send("Course not found");
+// No long in use as we are now creating sessions through the course page
+// export const showCreateSessionPage = async (req,res) => {
+//     if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+//     const course = await CourseModel.findById(req.params.courseId);
+//     if(!course) return res.status(404).send("Course not found");
 
-    res.render("create_session", {course, title : "Create Session" });
-};
+//     res.render("create_session", {course, title : "Create Session" });
+// };
 
 export const createSession = async  (req,res) => {
     if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }

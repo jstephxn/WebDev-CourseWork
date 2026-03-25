@@ -22,7 +22,8 @@
         </button>
       </form>
       {{#isInstructor}}
-        <a href="/admin/courses/{{course._id}}/sessions/new">Add Session</a>
+        <!-- Changed from being taken to a new page (create_session.mustache) to add a new session to the session creation to be at the bottom of the table -->
+        <!-- <a href="/admin/courses/{{course._id}}/sessions/new">Add Session</a> -->
         
         <a href="/admin/courses/{{course._id}}/edit" class="btn">Edit Course</a>
       {{/isInstructor}}
@@ -46,9 +47,11 @@
           <th>Booked</th>
           <th>Remaining</th>
           <th>Drop in</th>
+
           {{#isInstructor}}
             <th>Admin Actions</th>
           {{/isInstructor}}
+
         </tr>
       </thead>
 
@@ -62,7 +65,7 @@
           <td>{{remaining}}</td>
 
           <td>
-            {{#../course.allowDropIn}}
+            {{#allowDropIn}}
 
               {{#user}}
                 <form action="/sessions/{{id}}/book" method="POST" >
@@ -79,11 +82,11 @@
                 </span>
               {{/user}}
 
-            {{/../course.allowDropIn}}
+            {{/allowDropIn}}
 
-            {{^../course.allowDropIn}}
+            {{^allowDropIn}}
               <span class="muted">Drop-ins disabled</span>
-            {{/../course.allowDropIn}}
+            {{/allowDropIn}}
           </td>
           {{#isInstructor}}
               <td>
@@ -99,6 +102,30 @@
         {{/sessions}}
       </tbody>
     </table>
+
+    {{#user}}
+      {{#isInstructor}}
+
+        <h1>Add Session to {{course.title}}</h1>
+
+        <form method="POST" action="/admin/courses/{{course._id}}/sessions">
+
+          <label>Start Date & Time</label>
+          <input type="datetime-local" name="startDateTime" required>
+
+          <label>End Date & Time</label>
+          <input type="datetime-local" name="endDateTime" required>
+
+          <label>Capacity</label>
+          <input type="number" name="capacity" required>
+
+          <button type="submit">Create Session</button>
+
+        </form>
+
+      {{/isInstructor}}
+    {{/user}}
+
   </section>
 </article>
 

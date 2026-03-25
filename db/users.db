@@ -1,9 +1,3 @@
 {"name":"Ava","email":"ava@yoga.local","role":"instructor","password":"$2b$10$vBPUckkJ.cx.Sz5OO0UAgOa981HKpESed6SrQN1Gp3eA2N4Ek3gNW","_id":"5fIv5Woo9milxjNy"}
-{"name":"Ben","email":"ben@yoga.local","role":"instructor","_id":"7QQGARdjc2wkCvHF"}
-{"name":"Bruce","email":"Bruce@email.com","password":"$2b$10$vBPUckkJ.cx.Sz5OO0UAgOa981HKpESed6SrQN1Gp3eA2N4Ek3gNW","role":"student","createdAt":"2026-03-22T19:33:45.059Z","_id":"dPdZCQUbZAcMdLvt"}
 {"name":"James","email":"james@email.com","password":"$2b$10$I//kE4uhawQiXOWxBdavP.WkH81gJaJshpuUHq4vn5jA6EAOefPk2","role":"student","createdAt":"2026-03-24T22:31:30.300Z","_id":"dYJeW9lmXO4LkQyh"}
-{"name":"Fiona","email":"fiona@student.local","role":"student","_id":"hE3RtXPSjQiV3E99"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
-{"$$deleted":true,"_id":"7QQGARdjc2wkCvHF"}
-{"$$deleted":true,"_id":"dPdZCQUbZAcMdLvt"}
-{"$$deleted":true,"_id":"hE3RtXPSjQiV3E99"}

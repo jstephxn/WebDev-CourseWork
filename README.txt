@@ -8,7 +8,8 @@ After running the command above, in the same terminal run,
     'node index'
 
 To stop running the website select the terminal and press ' CNTRL + C ' and the site will terminate.
-        
+
+The folder /views/graveyard contains old views that are no longer in use for this project due the view no longer being necessary for the original intended task.
 
 List Key:
 
@@ -26,7 +27,7 @@ List Key:
     ✅ Logged in Users able to view 'My Account' Page
     ✅ Logged in Users able to change their password
     ✅ Logged in Users able to view their bookings
-    ❌ Logged in Users able to book Sessions rather than a full course.
+    ✅ Logged in Users able to book Sessions rather than a full course.
 
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
@@ -44,6 +45,9 @@ List Key:
     ❌ Email Formatting check for registration
     ❌ Prevent double booking
     ❌ Authorisation Middleware
+    ✅ Refactor session creation to be under the course rather than seperate page
+    ✅ Fix Session Booking (Courses always display Drop ins disabled)
+    🚧 Waitlist for booking courses or sessions
 
 
     Visual Edits (CSS):

@@ -6,7 +6,6 @@ import {
     showCreateCoursePage,
     deleteSession,
     createSession,
-    showCreateSessionPage,
     showAllUsersPage,
     showCreateUserPage,
     createUser,
@@ -23,14 +22,19 @@ const router = Router();
 router.get("/courses/new", showCreateCoursePage);
 router.post("/courses", createCourse);
 router.post("/courses/:id/delete", deleteCourse);
+
 router.get("/courses/:id/edit", showEditCoursePage);
 router.post("/courses/:id/update", updateCourse);
 
 // Session management routes
 router.get("/sessions/:id/participants", viewCourseParticipants);
 router.post("/sessions/:id/delete", deleteSession);
-router.get("/courses/:courseId/sessions/new", showCreateSessionPage);
 router.post("/courses/:courseId/sessions", createSession);
+
+// No long in use as we are now creating sessions through the course page
+// router.get("/courses/:courseId/sessions/new", showCreateSessionPage);
+
+
 
 // User management routes
 router.get("/display_users", showAllUsersPage);

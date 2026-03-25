@@ -67,7 +67,9 @@ export const courseDetailPage = async (req, res, next) => {
       end: fmtDate(s.endDateTime),
       capacity: s.capacity,
       booked: s.bookedCount ?? 0,
+      allowDropIn: course.allowDropIn,
       remaining: Math.max(0, (s.capacity ?? 0) - (s.bookedCount ?? 0)),
+      isFull: (s.bookedCount ?? 0) >= (s.capacity ?? 0)
     }));
 
     res.render("course", {

@@ -12,7 +12,7 @@
   <input name="level" value="{{course.level}}" required>
 
   <label>Course Type</label>
-    <select name="type">
+    <select name="type" value="{{course.type}}">
         <option value="WEEKLY_BLOCK">Weekly Block</option>
         <option value="WEEKEND_WORKSHOP">Weekend Workshop</option>
     </select>
@@ -20,13 +20,13 @@
   <textarea name="description">{{course.description}}</textarea>
 
     <label>Allow Drop-in</label>
-  <input type="checkbox" name="allowDropIn" value="true" />
+  <input type="checkbox" name="allowDropIn" value="{{course.allowDropIn}}" />
 
   <label>Start Date</label>
-  <input type="date" name="startDate" />
+  <input type="date" name="startDate" value="{{course.startDate}}"/>
 
   <label>End Date</label>
-  <input type="date" name="endDate" />
+  <input type="date" name="endDate" value="{{course.endDate}}"/>
 
   <button type="submit" class="btn primary">Update Course</button>
 

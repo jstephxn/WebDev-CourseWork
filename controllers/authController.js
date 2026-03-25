@@ -116,7 +116,7 @@ export const showUserAccountPage = async (req, res) => {
                 id: booking._id, 
                 type: booking.type,
                 status: booking.status,
-                courseName: course ? course.name : "Unknown Course",
+                courseName: course ? course.title : "Unknown Course",
                 sessionCount: booking.sessionIds?.length || 0
             }; 
         }
