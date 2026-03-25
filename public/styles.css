@@ -329,3 +329,176 @@ hr {
 .btn.danger:hover {
   background: #c0392b;
 }
+
+/* PAGE LAYOUT */
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* CARD */
+.confirmation-card {
+  max-width: 500px;
+  width: 100%;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* ICON */
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* STATUS COLOURS */
+.icon.CONFIRMED {
+  color: #2ecc71;
+}
+
+.icon.WAITLISTED {
+  color: #f39c12;
+}
+
+.icon.CANCELLED {
+  color: #e74c3c;
+}
+
+/* TITLE */
+.confirmation-card h1 {
+  margin-bottom: 10px;
+}
+
+/* MESSAGE */
+.message {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* DETAILS */
+.details {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.btn.primary {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.btn.primary:hover {
+  opacity: 0.9;
+}
+
+/* CENTER PAGE */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* CARD */
+.form-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.form-card h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* FORM GROUP */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* INPUT */
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* INPUT FOCUS */
+.form-group input:focus {
+  outline: none;
+  border-color: black;
+}
+
+/* ERROR */
+.error {
+  color: #e74c3c;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* CHECKBOX */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+/* BUTTON */
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: black;
+  color: white;
+}
+
+.btn.primary:hover {
+  opacity: 0.9;
+}
+
+/* FULL WIDTH BUTTON */
+.full-width {
+  width: 100%;
+}

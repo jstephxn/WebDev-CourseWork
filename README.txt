@@ -55,22 +55,29 @@ List Key:
     ✅ Waitlist for booking courses or sessions
 
 
-    Visual Edits (CSS):
+    Visual Edits:
         
         ✅ Add images
-        ✅ Update Navbar to contain a logo and better link layout
-        ✅ Refine Homepage
-        ✅ Refine User Account Page
-        ❌ Refine Login
-        ❌ Refine Register
-        ❌ Refine Courses Page
-        ❌ Refine Course Page
-        ❌ Refine Booking confirmation
-        ❌ Refine Class Creation
-        ❌ Refine Class Editing
-        ❌ Refine Session Creation
-        ❌ Refine Action Buttons
-        ❌ Refine User Creation
-        ❌ Refine User Editing 
+        🚧 Update CSS for these pages:
+            ✅ Booking confirmation
+            ✅ Change Password
+            🚧 Book Course
+            🚧 Course Details
+            🚧 Course List
+            🚧 Create Course 
+            🚧 Create User
+            🚧 Display Users
+            🚧 Edit Course
+            🚧 Edit User
+            🚧 Error
+            ✅ Home
+            🚧 Login
+            🚧 Participants
+            🚧 Register
+            ✅ User Account - Fix Update Password button
+        ✅ Update Nav bar CSS
+
+        
+        
 
           
