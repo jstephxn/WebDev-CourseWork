@@ -1,18 +1,30 @@
 {{> head}}
 {{> header}}
 <link rel="stylesheet" href="../public/styles.css"/>
-<select name="level">
-  <option value="" {{^filters.level}}selected{{/filters.level}}>Any</option>
-  <option value="beginner" {{#filters}}{{#level}} {{#isBeginner}}selected{{/isBeginner}} {{/level}}{{/filters}}>Beginner</option>
-</select>
+<section>
+  <form method="GET" action="/courses">
 
- <label>
+    <select name="level">
+      <option value="" {{^filters.level}}selected{{/filters.level}}>Any</option>
+      <option value="beginner" {{#isBeginner}}selected{{/isBeginner}}>Beginner</option>
+      <option value="intermediate" {{#isIntermediate}}selected{{/isIntermediate}}>Intermediate</option>
+      <option value="advanced" {{#isAdvanced}}selected{{/isAdvanced}}>Advanced</option>
+    </select>
+
+    <label>
       Search
-      <input type="search" name="q" value="{{filters.q}}" placeholder="Title or description" />
+      <input
+        type="search"
+        name="q"
+        value="{{filters.q}}"
+        placeholder="Title or description"
+      />
     </label>
 
     <button class="btn" type="submit">Apply</button>
-    <a href="/coursesReset" class="btn">Reset</a>
+
+    <a href="/courses" class="btn">Reset</a>
+
   </form>
 </section>
 

@@ -41,8 +41,8 @@ List Key:
     ❌ Admins (Instructors) can change a Users Password
     ❌ Admins (Instructors) can download a csv of course bookings
 
-    ❌ Fix Reset on Course Filter
-    ❌ Email Formatting check for registration
+    ✅ Fix Courses Filter
+    🚧 Email Formatting check for registration
     ❌ Prevent double booking
     ❌ Authorisation Middleware
     ✅ Refactor session creation to be under the course rather than seperate page

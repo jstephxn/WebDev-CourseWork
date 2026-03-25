@@ -140,6 +140,9 @@ nav a {
 }
 
 .banner {
+    padding-left:5%;
+    padding-right:5%;
+    
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -200,6 +203,7 @@ nav a {
 }
 
 .logo {
+
   height: 85px;
   width: auto;
 }
