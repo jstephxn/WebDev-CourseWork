@@ -1,32 +1,80 @@
-{{> head }}
-{{> header }}
+{{> head}}
+{{> header}}
 
-<h1> All Users: </h1>
-<a href="/admin/create_user" class="btn primary"> Create User </a>
-<table class="table">
-    <thead>
+<link rel="stylesheet" href="/static/styles.css"/>
+
+<main class="admin-page">
+
+  <!-- ===== HEADER ===== -->
+  <section class="admin-header">
+    <h1>All Users</h1>
+
+    <a href="/admin/create_user" class="btn primary">
+      + Create User
+    </a>
+  </section>
+
+  <!-- ===== TABLE ===== -->
+  <section class="table-card">
+
+    <table class="table">
+
+      <thead>
         <tr>
-            <td><strong>Username</strong></td>
-            <td><strong>Name</strong></td>
-            <td><strong>Role</strong></td>
-            <td><strong>Actions</strong></td>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Actions</th>
         </tr>
-    </thead>
+      </thead>
+
+      <tbody>
         {{#users}}
         <tr>
-        <td>{{email}}</td>
-        <td>{{name}}</td>
-        <td>{{role}}</td>
-        <td>
-            <form method="POST" action="/admin/{{_id}}/delete_user">
-                <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')" class="btn">Delete User</button>
+
+          <td>{{email}}</td>
+
+          <td>{{name}}</td>
+
+          <td>
+            <span class="role-badge {{role}}">
+              {{role}}
+            </span>
+          </td>
+
+          <td class="actions">
+
+            <a href="/admin/users/{{_id}}/edit" class="btn">
+              Edit
+            </a>
+
+            <form method="POST" action="/admin/{{_id}}/delete">
+              <button
+                type="submit"
+                class="btn danger"
+                onclick="return confirm('Delete this user?')">
+                Delete
+              </button>
             </form>
-            <a href="/admin/users/{{_id}}/edit" class="btn">Edit User</a>
-        </td>
+
+          </td>
+
         </tr>
         {{/users}}
-    <tbody>
-    </tbody>
-</table>
 
-{{> footer }}
+        {{^users}}
+        <tr>
+          <td colspan="4" class="empty-state">
+            No users found.
+          </td>
+        </tr>
+        {{/users}}
+      </tbody>
+
+    </table>
+
+  </section>
+
+</main>
+
+{{> footer}}

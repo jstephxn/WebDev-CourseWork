@@ -115,16 +115,37 @@ export const showCreateUserPage = (req, res) => {
     res.render("create_user", { title: "Create User" });
 };
 
-export const createUser = async (req,res) => {
-    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
-    const { name, email, password, role } = req.body;
-    await UserModel.create({
-        name,
-        email,
-        password,
-        role
-    });
-    res.redirect("/admin/display_users");
+export const createUser = async (req, res) => {
+  const { name, email, password, confirmPassword, role } = req.body;
+
+  if (!name || !email || !password) {
+    return res.render("create_user", { error: "All fields are required" });
+  }
+
+  if (password !== confirmPassword) {
+    return res.render("create_user", { error: "Passwords do not match" });
+  }
+
+  if (password.length < 6) {
+    return res.render("create_user", { error: "Password must be at least 6 characters" });
+  }
+
+  // check if email exists
+  const existing = await UserModel.findByEmail(email);
+  if (existing) {
+    return res.render("create_user", { error: "Email already in use" });
+  }
+
+  const hashed = await bcrypt.hash(password, 10);
+
+  await UserModel.create({
+    name,
+    email,
+    password: hashed,
+    role
+  });
+
+  res.redirect("/admin/display_users");
 };
 
 export const showAllUsersPage = async (req, res) => {
@@ -134,24 +155,51 @@ export const showAllUsersPage = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
-    const userId = req.params.id;
-    await UserModel.delete(userId);
-    res.redirect("/admin/display_users");
+  if (req.session.user._id === req.params.id) {
+  return res.send("You cannot delete your own account");
+  }
+  if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+  const userId = req.params.id;
+  await UserModel.delete(userId);
+  res.redirect("/admin/display_users");
 };
 
 export const showEditCoursePage = async (req, res) => {
-    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
+    if(!req.session.user?.role === "instructor")
+      { 
+        return res.status(401).send("You must be an instructor to create a course."); 
+      }
+    
     const course = await CourseModel.findById(req.params.id);
+
     if (!course) return res.status(404).send("Course not found");
-    res.render("edit_course", { course, title: "Edit Course" });
+
+    res.render("edit_course", { 
+      course, 
+      title: "Edit Course",
+      isBeginner: course.level === "beginner",
+      isIntermediate: course.level === "intermediate",
+      isAdvanced: course.level === "advanced",
+      isWeekly: course.type === "WEEKLY_BLOCK",
+      isWorkshop: course.type === "WEEKEND_WORKSHOP"
+     });
 };
 
 export const updateCourse = async (req, res) => {
-    if(!req.session.user?.role === "instructor"){ return res.status(401).send("You must be an instructor to create a course."); }
-    const courseId = req.params.id;
+    if(!req.session.user?.role === "instructor")
+      { 
+        return res.status(401).send("You must be an instructor to create a course.");
+      }
+    const courseId = req.params.id
+
     const { title, description, level, type, allowDropIn, startDate, endDate } = req.body;
+    
+    if (new Date(startDate) > new Date(endDate)) {
+      throw new Error("Start date must be before end date");
+    }
+    
     await CourseModel.update(courseId, { title, description, level, type, allowDropIn, startDate, endDate });
+   
     res.redirect(`/courses/${courseId}`);
 };
 
@@ -165,51 +213,33 @@ export const showEditUserPage = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const { id } = req.params;
   const { name, email, password, confirmPassword, role } = req.body;
+  const userId = req.params.id;
 
-  const user = await UserModel.findById(id);
+  const existingUser = await UserModel.findById(userId);
 
-  if (!user) {
-    return res.status(404).send("User not found");
-  }
-
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.render("edit_user", {
-      error: "Invalid email format",
-      user
-    });
-  }
-
-  let updateData = {
-    name,
-    email,
-    role
-  };
+  let updatedPassword = existingUser.password;
 
   // Only update password if provided
   if (password) {
     if (password !== confirmPassword) {
       return res.render("edit_user", {
         error: "Passwords do not match",
-        user
+        user: existingUser,
+        isStudent: existingUser.role === "student",
+        isInstructor: existingUser.role === "instructor"
       });
     }
 
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
-    if (!passwordRegex.test(password)) {
-      return res.render("edit_user", {
-        error: "Password must be at least 6 characters and include a number",
-        user
-      });
-    }
-
-    updateData.password = await bcrypt.hash(password, 10);
+    updatedPassword = await bcrypt.hash(password, 10);
   }
 
-  await UserModel.update(id, updateData);
+  await UserModel.update(userId, {
+    name,
+    email,
+    role,
+    password: updatedPassword
+  });
 
   res.redirect("/admin/display_users");
 };

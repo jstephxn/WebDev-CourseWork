@@ -3,12 +3,13 @@ import { usersDb } from "./_db.js";
 
 export const UserModel = {
   // Create a new user with basic validation + defaults
-  async create({ name, email, password, role = "student" }) {
+  async create({ name, email, password, role}) {
     console.log("Creating user:", { name, email, role });
     // Basic validation
     if (!name || !email || !password) {
       throw new Error("Missing required user fields");
     }
+    if(!role){ role = "student"; }
 
 
     return usersDb.insert({

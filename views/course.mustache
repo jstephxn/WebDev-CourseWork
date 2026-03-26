@@ -1,43 +1,64 @@
 {{> head}}
 {{> header}}
 
-<article>
-  <h1>{{course.title}}</h1>
+<article class="course-page">
 
-  <p class="muted">
-    Level: {{course.level}} • Type: {{course.type}}
-    {{#course.allowDropIn}}• Drop-in available{{/course.allowDropIn}}
-  </p>
+  <!-- ===== COURSE HEADER ===== -->
+  <section class="course-header">
+    <h1>{{course.title}}</h1>
 
-  <p>{{course.description}}</p>
-  <p class="muted">Dates: {{course.startDate}} – {{course.endDate}}</p>
+    <p class="muted">
+      Level: {{course.level}} • Type: {{course.type}}
+      {{#course.allowDropIn}}• Drop-in available{{/course.allowDropIn}}
+    </p>
 
-  <section>
+    <p class="course-description">{{course.description}}</p>
+    <p class="muted">Dates: {{course.startDate}} – {{course.endDate}}</p>
+  </section>
+
+  <!-- ===== COURSE BOOKING ===== -->
+  <section class="course-booking">
     <h2>Book the full course</h2>
+
     {{#user}}
-      {{#course.isBooked}}
-        <button class="btn" disabled>Already Booked</button>
-      {{/course.isBooked}}
-      {{^course.isBooked}}
-      <a href="/courses/{{course._id}}/book" class="btn primary">
-        Book full course
-      </a>
-      </form>
-      {{/course.isBooked}}
-      {{#isInstructor}}
-        <!-- Changed from being taken to a new page (create_session.mustache) to add a new session to the session creation to be at the bottom of the table -->
-        <!-- <a href="/admin/courses/{{course._id}}/sessions/new">Add Session</a> -->
-        <a href="/admin/courses/{{course._id}}/export" class="btn"> Download Participants (CSV) </a>
-        <a href="/admin/courses/{{course._id}}/edit" class="btn">Edit Course</a>
-      {{/isInstructor}}
+
+      <div class="booking-actions">
+
+        {{#course.isBooked}}
+          <button class="btn booked" disabled>Already Booked</button>
+        {{/course.isBooked}}
+
+        {{^course.isBooked}}
+          <a href="/courses/{{course._id}}/book" class="btn primary">
+            Book full course
+          </a>
+        {{/course.isBooked}}
+
+        {{#isInstructor}}
+          <div class="admin-actions">
+            <a href="/admin/courses/{{course._id}}/export" class="btn">
+              Download Participants (CSV)
+            </a>
+
+            <a href="/admin/courses/{{course._id}}/edit" class="btn">
+              Edit Course
+            </a>
+          </div>
+        {{/isInstructor}}
+
+      </div>
+
     {{/user}}
 
     {{^user}}
-      <p>Please <a href="/login">login</a> to book this course.</p>
+      <p class="muted">
+        Please <a href="/login">login</a> to book this course.
+      </p>
     {{/user}}
   </section>
 
-  <section>
+  <!-- ===== SESSIONS ===== -->
+  <section class="course-sessions">
     <h2>Sessions</h2>
 
     <table class="table">
@@ -48,38 +69,44 @@
           <th>Capacity</th>
           <th>Booked</th>
           <th>Remaining</th>
-          <th>Drop in</th>
+          <th>Booking</th>
 
           {{#isInstructor}}
-            <th>Admin Actions</th>
+            <th>Admin</th>
           {{/isInstructor}}
-
         </tr>
       </thead>
 
       <tbody>
         {{#sessions}}
-        <tr>
+        <tr class="{{#isFull}}full{{/isFull}}">
+
           <td>{{start}}</td>
           <td>{{end}}</td>
           <td>{{capacity}}</td>
           <td>{{booked}}</td>
           <td>{{remaining}}</td>
 
+          <!-- ===== BOOK SESSION ===== -->
           <td>
+
             {{#allowDropIn}}
 
               {{#user}}
-              {{#isBooked}}
-                <span class="muted">Session Booked<span>
-              {{/isBooked}}
-              {{^isBooked}}
-                <form action="/sessions/{{id}}/book" method="POST" >
-                  <button class="btn" type="submit" {{#isFull}}disabled{{/isFull}}>
-                    Book this session
-                  </button>
-                </form>
-              {{/isBooked}}
+
+                {{#isBooked}}
+                  <span class="booked">Session Booked</span>
+                {{/isBooked}}
+
+                {{^isBooked}}
+                  <form action="/sessions/{{id}}/book" method="POST">
+                    <button class="btn" type="submit" {{#isFull}}disabled{{/isFull}}>
+                      {{#isFull}}Full{{/isFull}}
+                      {{^isFull}}Book Session{{/isFull}}
+                    </button>
+                  </form>
+                {{/isBooked}}
+
               {{/user}}
 
               {{^user}}
@@ -93,26 +120,40 @@
             {{^allowDropIn}}
               <span class="muted">Drop-ins disabled</span>
             {{/allowDropIn}}
+
           </td>
+
+          <!-- ===== ADMIN SESSION ACTIONS ===== -->
           {{#isInstructor}}
-              <td>
-                <a href="/admin/sessions/{{id}}/participants" class="btn">View Participants</a>
-                <form method="POST" action="/admin/sessions/{{id}}/delete" >
-                  <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete this session?')">
-                    Delete Session
-                  </button>
-                </form>
-              </td>
-            {{/isInstructor}}
+          <td class="admin-actions">
+
+            <a href="/admin/sessions/{{id}}/participants" class="btn">
+              Participants
+            </a>
+
+            <form method="POST" action="/admin/sessions/{{id}}/delete">
+              <button
+                type="submit"
+                class="btn danger"
+                onclick="return confirm('Delete this session?')">
+                Delete
+              </button>
+            </form>
+
+          </td>
+          {{/isInstructor}}
+
         </tr>
         {{/sessions}}
       </tbody>
     </table>
 
+    <!-- ===== ADD SESSION (ADMIN) ===== -->
     {{#user}}
       {{#isInstructor}}
 
-        <h1>Add Session to {{course.title}}</h1>
+      <div class="admin-form">
+        <h3>Add Session</h3>
 
         <form method="POST" action="/admin/courses/{{course._id}}/sessions">
 
@@ -125,14 +166,18 @@
           <label>Capacity</label>
           <input type="number" name="capacity" required>
 
-          <button type="submit">Create Session</button>
+          <button class="btn primary" type="submit">
+            Create Session
+          </button>
 
         </form>
+      </div>
 
       {{/isInstructor}}
     {{/user}}
 
   </section>
+
 </article>
 
 {{> footer}}

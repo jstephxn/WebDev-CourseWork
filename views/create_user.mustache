@@ -1,27 +1,85 @@
 {{> head}}
 {{> header}}
 
-<h1>Create User</h1>
+<link rel="stylesheet" href="/static/styles.css"/>
 
-<form method="POST" action="/admin/create_user">
+<main class="admin-page">
 
-  <label>Name</label>
-  <input name="name" required>
+  <section class="form-card">
 
-  <label>Email</label>
-  <input name="email" required>
+    <h1>Create User</h1>
+    <p class="muted">Add a new user to the system</p>
 
-  <label>Role</label>
-  <select name="role">
-    <option value="student">Student</option>
-    <option value="instructor">Instructor</option>
-  </select>
+    <form method="POST" action="/admin/create_user" class="form">
 
-  <label>Password</label>
-  <input name="password" required> 
+      <!-- NAME -->
+      <div class="form-group">
+        <label>Name</label>
+        <input name="name" required placeholder="Full name" />
+      </div>
 
-  <button type="submit">Create User</button>
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="user@example.com" />
+      </div>
 
-</form>
+      <!-- ROLE -->
+      <div class="form-group">
+        <label>Role</label>
+        <select name="role">
+          <option value="student">Student</option>
+          <option value="instructor">Instructor</option>
+        </select>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required />
+      </div>
+
+      <!-- SHOW PASSWORD -->
+      <div class="form-group checkbox">
+        <input type="checkbox" onclick="togglePassword()" id="showPw"/>
+        <label for="showPw">Show Password</label>
+      </div>
+
+      <!-- ERROR MESSAGE -->
+      {{#error}}
+        <p class="error">{{error}}</p>
+      {{/error}}
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button class="btn primary" type="submit">
+          Create User
+        </button>
+
+        <a href="/admin/display_users" class="btn">Cancel</a>
+      </div>
+
+    </form>
+
+  </section>
+
+</main>
+
+<script>
+function togglePassword() {
+  const pw = document.getElementById("password");
+  const cpw = document.getElementById("confirmPassword");
+
+  const type = pw.type === "password" ? "text" : "password";
+  pw.type = type;
+  cpw.type = type;
+}
+</script>
 
 {{> footer}}

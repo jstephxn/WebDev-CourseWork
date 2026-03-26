@@ -1,35 +1,83 @@
 {{> head}}
 {{> header}}
 
-<h1>Edit Course</h1>
+<link rel="stylesheet" href="/static/styles.css"/>
 
-<form method="POST" action="/admin/courses/{{course._id}}/update">
+<main class="admin-page">
 
-  <label>Title</label>
-  <input name="title" value="{{course.title}}" required>
+  <section class="form-card">
 
-  <label>Level</label>
-  <input name="level" value="{{course.level}}" required>
+    <h1>Edit Course</h1>
+    <p class="muted">Update course details</p>
 
-  <label>Course Type</label>
-    <select name="type" value="{{course.type}}">
-        <option value="WEEKLY_BLOCK">Weekly Block</option>
-        <option value="WEEKEND_WORKSHOP">Weekend Workshop</option>
-    </select>
-  <label>Description</label>
-  <textarea name="description">{{course.description}}</textarea>
+    <form method="POST" action="/admin/courses/{{course._id}}/update" class="form">
 
-    <label>Allow Drop-in</label>
-  <input type="checkbox" name="allowDropIn" value="{{course.allowDropIn}}" />
+      <!-- TITLE -->
+      <div class="form-group">
+        <label>Title</label>
+        <input name="title" value="{{course.title}}" required />
+      </div>
 
-  <label>Start Date</label>
-  <input type="date" name="startDate" value="{{course.startDate}}"/>
+      <!-- LEVEL -->
+      <div class="form-group">
+        <label>Level</label>
+        <select name="level">
+          <option value="beginner" {{#isBeginner}}selected{{/isBeginner}}>Beginner</option>
+          <option value="intermediate" {{#isIntermediate}}selected{{/isIntermediate}}>Intermediate</option>
+          <option value="advanced" {{#isAdvanced}}selected{{/isAdvanced}}>Advanced</option>
+        </select>
+      </div>
 
-  <label>End Date</label>
-  <input type="date" name="endDate" value="{{course.endDate}}"/>
+      <!-- TYPE -->
+      <div class="form-group">
+        <label>Course Type</label>
+        <select name="type">
+          <option value="WEEKLY_BLOCK" {{#isWeekly}}selected{{/isWeekly}}>Weekly Block</option>
+          <option value="WEEKEND_WORKSHOP" {{#isWorkshop}}selected{{/isWorkshop}}>Weekend Workshop</option>
+        </select>
+      </div>
 
-  <button type="submit" class="btn primary">Update Course</button>
+      <!-- DROP-IN -->
+      <div class="form-group checkbox">
+        <input type="checkbox" name="allowDropIn" value="true" id="dropin"
+          {{#course.allowDropIn}}checked{{/course.allowDropIn}} />
+        <label for="dropin">Allow drop-in booking</label>
+      </div>
 
-</form>
+      <!-- DATES -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" name="startDate" value="{{course.startDate}}" />
+        </div>
+
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="date" name="endDate" value="{{course.endDate}}" />
+        </div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" rows="4">{{course.description}}</textarea>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="submit" class="btn primary">
+          Update Course
+        </button>
+
+        <a href="/courses/{{course._id}}" class="btn">
+          Cancel
+        </a>
+      </div>
+
+    </form>
+
+  </section>
+
+</main>
 
 {{> footer}}

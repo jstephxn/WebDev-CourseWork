@@ -2,8 +2,29 @@
 {{> head}}
 {{> header}}
 
-<h1>{{title}}</h1>
-<p>{{message}}</p>
-<p><a href="/" class="btn primary">Return Home</a></p>
+<link rel="stylesheet" href="/static/styles.css"/>
+
+<main class="error-page">
+
+  <section class="error-card">
+
+    <div class="error-icon">
+      ⚠️
+    </div>
+
+    <h1>{{title}}</h1>
+
+    <p class="error-message">
+      {{message}}
+    </p>
+
+    <div class="error-actions">
+      <a href="/" class="btn primary">Return Home</a>
+      <a href="/courses" class="btn">Browse Courses</a>
+    </div>
+
+  </section>
+
+</main>
 
 {{> footer}}

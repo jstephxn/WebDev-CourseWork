@@ -1,34 +1,77 @@
 {{> head}}
 {{> header}}
 
-<h1>Edit User</h1>
+<link rel="stylesheet" href="/static/styles.css"/>
 
-<form method="POST" action="/admin/users/{{user._id}}/update">
+<main class="admin-page">
 
-  <label>Name</label>
-  <input name="name" value="{{user.name}}" required>
+  <section class="form-card">
 
-  <label>Email</label>
-  <input name="email" value="{{user.email}}" required>
+    <h1>Edit User</h1>
+    <p class="muted">Update user details</p>
 
-  <label>Password (Leave blank to keep current password)</label>#
-  <input name="password" type="password" id="password"/>
+    <form method="POST" action="/admin/users/{{user._id}}/update" class="form">
 
-  <label> Confirm Password </label>
-  <input name="confirmPassword" type="password" id="confirmPassword" />
+      <!-- NAME -->
+      <div class="form-group">
+        <label>Name</label>
+        <input name="name" value="{{user.name}}" required />
+      </div>
 
-  <label> Show Password </label>
-  <input type="checkbox" onclick="togglePassword()" />
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" value="{{user.email}}" required />
+      </div>
 
-  <label>Role</label>
-  <select name="role">
-    <option value="student">Student</option>
-    <option value="instructor">Instructor</option>
-  </select>
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <label>Password (leave blank to keep current)</label>
+        <input name="password" type="password" id="password" />
+      </div>
 
-  <button type="submit">Update User</button>
+      <!-- CONFIRM PASSWORD -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input name="confirmPassword" type="password" id="confirmPassword" />
+      </div>
 
-</form>
+      <!-- SHOW PASSWORD -->
+      <div class="form-group checkbox">
+        <input type="checkbox" onclick="togglePassword()" id="showPw"/>
+        <label for="showPw">Show Password</label>
+      </div>
+
+      <!-- ROLE -->
+      <div class="form-group">
+        <label>Role</label>
+        <select name="role">
+          <option value="student" {{#isStudent}}selected{{/isStudent}}>Student</option>
+          <option value="instructor" {{#isInstructor}}selected{{/isInstructor}}>Instructor</option>
+        </select>
+      </div>
+
+      <!-- ERROR -->
+      {{#error}}
+        <p class="error">{{error}}</p>
+      {{/error}}
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="submit" class="btn primary">
+          Update User
+        </button>
+
+        <a href="/admin/display_users" class="btn">
+          Cancel
+        </a>
+      </div>
+
+    </form>
+
+  </section>
+
+</main>
 
 <script>
 function togglePassword(){
@@ -42,4 +85,3 @@ function togglePassword(){
 </script>
 
 {{> footer}}
-

@@ -1,38 +1,80 @@
 {{> head}}
 {{> header}}
 
+<link rel="stylesheet" href="/static/styles.css"/>
 
-<h1>Create Course</h1>
+<main class="admin-page">
 
-<form method="POST" action="/admin/courses">
+  <section class="form-card">
 
-  <label>Title</label>
-  <input name="title" required />
+    <h1>Create Course</h1>
+    <p class="muted">Add a new yoga course to the system</p>
 
-  <label>Level</label>
-  <input name="level" />
+    <form method="POST" action="/admin/courses" class="form">
 
-  <label>Type</label>
-  <select name="type">
-    <option value="WEEKLY_BLOCK">Weekly Block</option>
-    <option value="WEEKEND_WORKSHOP">Weekend Workshop</option>
-  </select>
+      <div class="form-group">
+        <label>Title</label>
+        <input name="title" required placeholder="e.g. Morning Flow Yoga" />
+      </div>
 
-  <label>Allow Drop-in</label>
-  <input type="checkbox" name="allowDropIn" value="true" />
+      
+      <div class="form-group">
+        <label>Level</label>
+        <select name="level">
+          <option value="">Select level</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
 
-  <label>Start Date</label>
-  <input type="date" name="startDate" />
+      
+      <div class="form-group">
+        <label>Type</label>
+        <select name="type">
+          <option value="WEEKLY_BLOCK">Weekly Block</option>
+          <option value="WEEKEND_WORKSHOP">Weekend Workshop</option>
+        </select>
+      </div>
 
-  <label>End Date</label>
-  <input type="date" name="endDate" />
+      
+      <div class="form-group checkbox">
+        <input type="checkbox" name="allowDropIn" value="true" id="dropin"/>
+        <label for="dropin">Allow drop-in booking</label>
+      </div>
 
-  <label>Description</label>
-  <textarea name="description"></textarea>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" name="startDate" />
+        </div>
 
-  <button type="submit">Create Course</button>
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="date" name="endDate" />
+        </div>
+      </div>
 
-</form>
+      
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" rows="4" placeholder="Describe the course..."></textarea>
+      </div>
 
+      
+      <div class="form-actions">
+        <button class="btn primary" type="submit">
+          Create Course
+        </button>
+
+        <a href="/courses" class="btn">Cancel</a>
+      </div>
+
+    </form>
+
+  </section>
+
+</main>
 
 {{> footer}}

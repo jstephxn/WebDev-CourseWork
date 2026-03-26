@@ -1,34 +1,63 @@
 {{> head}}
 {{> header}}
 
-<h1>Session Participants</h1>
+<link rel="stylesheet" href="/static/styles.css"/>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Status</th>
-    </tr>
-  </thead>
+<main class="admin-page">
 
-  <tbody>
-    {{#participants}}
-      <tr>
-        <td>{{name}}</td>
-        <td>{{email}}</td>
-        <td>{{status}}</td>
-      </tr>
-    {{/participants}}
+  <!-- ===== HEADER ===== -->
+  <section class="admin-header">
+    <h1>Session Participants</h1>
 
-    {{^participants}}
-      <tr>
-        <td colspan="3">No participants yet</td>
-      </tr>
-    {{/participants}}
-  </tbody>
-</table>
+    <a href="/courses" class="btn">
+      ← Back to Courses
+    </a>
+  </section>
 
-<a href="/">Back</a>
+  <!-- ===== TABLE ===== -->
+  <section class="table-card">
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {{#participants}}
+        <tr>
+
+          <td>{{name}}</td>
+          <td>{{email}}</td>
+
+          <td>
+            <span class="status-badge {{status}}">
+              {{status}}
+            </span>
+          </td>
+
+        </tr>
+        {{/participants}}
+
+        {{^participants}}
+        <tr>
+          <td colspan="3" class="empty-state">
+            No participants yet
+          </td>
+        </tr>
+        {{/participants}}
+
+      </tbody>
+
+    </table>
+
+  </section>
+
+</main>
 
 {{> footer}}

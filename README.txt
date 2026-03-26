@@ -43,8 +43,8 @@ List Key:
     ✅ Admins (Instructors) can change a Users Password
     ✅ Admins (Instructors) can download a csv of course bookings
 
-    ✅ Fix Courses Filter
-    🚧 Fully implement the course_book page
+    ✅ Fully implement the Course Filter
+    ✅ Fully implement the course_book page
     ✅ Email Formatting check for registration
     ✅ Password Validation
     ✅ Add a show password button to login and register
@@ -59,22 +59,22 @@ List Key:
     Visual Edits:
         
         ✅ Add images
-        🚧 Update CSS for these pages:
+        ✅ Update CSS for these pages:
             ✅ Booking confirmation
             ✅ Change Password
-            🚧 Book Course
-            🚧 Course Details
-            🚧 Course List
-            🚧 Create Course 
-            🚧 Create User
-            🚧 Display Users
-            🚧 Edit Course
-            🚧 Edit User
-            🚧 Error
+            ✅ Book Course
+            ✅ Course Details
+            ✅ Course List
+            ✅ Create Course 
+            ✅ Create User
+            ✅ Display Users
+            ✅ Edit Course
+            ✅ Edit User
+            ✅ Error
             ✅ Home
-            🚧 Login
-            🚧 Participants
-            🚧 Register
+            ✅ Login
+            ✅ Participants
+            ✅ Register
             ✅ User Account - Fix Update Password button
         ✅ Update Nav bar CSS
 
