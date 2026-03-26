@@ -1,4 +1,5 @@
-{"name":"Ava","email":"ava@yoga.local","role":"instructor","password":"$2b$10$ndsu2gbJaYxsYAhZmIwdM.3R.SeaL.qxuWlF9G7tEP76qlo0vScn.","_id":"5fIv5Woo9milxjNy"}
+{"name":"Ava","email":"ava@yoga.local","role":"instructor","password":"$2b$10$w/zoVHfR35fQwm/exacvRetNJOBsEKLDP20jzYzs/DJCAUoK6s7UO","_id":"5fIv5Woo9milxjNy"}
 {"name":"Mitch","email":"mitch@email.com","password":"$2b$10$Uyzbr34r7eBLzltRFm1IIOWZyWXIyqXVUoH2ARvFbF9LScuHNNe7W","role":"student","createdAt":"2026-03-25T14:30:56.125Z","_id":"KS24WX93r7XBWeq8"}
 {"name":"James","email":"james@email.com","password":"$2b$10$uqqB/THQuOujdHepfZLn7er752b08sQ3HMk0GWrS1Oc.N5nt8YBbq","role":"student","createdAt":"2026-03-24T22:31:30.300Z","_id":"dYJeW9lmXO4LkQyh"}
+{"name":"Mitchell Hudson","email":"mitch@grammarsaurus.co.uk","password":"$2b$10$yqhkfGS5sqhtQz0IV42y8.oJzgkdylR6cqrmiuP2OPoMfnhPQptNy","role":"student","createdAt":"2026-03-26T19:07:27.330Z","_id":"mO4DuTkjltraXwKO"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}

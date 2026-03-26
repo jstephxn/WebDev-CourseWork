@@ -3,7 +3,7 @@
   --ink: #222;
   --muted: #666;
   --bg: #fff;
-  --brand: #2d7ef7;
+  --brand: #e6c9a8;
   --line: #eee;
   --radius: 10px;
 }
@@ -123,13 +123,13 @@ button:disabled {
 /* ===== CARDS ===== */
 .cards {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .card {
   background: white;
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
@@ -199,6 +199,16 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: flex-start;
+}
+
+.checkbox label {
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox input {
+  margin: 0;
 }
 
 /* ===== FILTERS ===== */
@@ -224,9 +234,12 @@ button:disabled {
 
 /* ===== BADGES ===== */
 .badge {
+  display: inline-block;
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.75rem;
+  height: fit-content;
+  white-space: nowrap;
 }
 
 /* status */
@@ -252,6 +265,98 @@ button:disabled {
   justify-content: space-between;
 }
 
+/* ===== PAGE WRAPPER ===== */
+.booking-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ===== CARD ===== */
+.booking-form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* ===== HEADINGS ===== */
+.booking-form h1 {
+  margin-bottom: 10px;
+}
+
+.booking-form .muted {
+  margin-bottom: 20px;
+}
+
+/* ===== FIELDSET ===== */
+.booking-form fieldset {
+  border: none;
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+.booking-form legend {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ===== FORM GROUP ===== */
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* ===== INPUTS ===== */
+.field input,
+.field textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ===== CHECKBOX FIX ===== */
+.field.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== SESSION LIST ===== */
+.booking-summary ul {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.booking-summary li {
+  margin-bottom: 6px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn.primary {
+  background: #2d7ef7;
+  color: white;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: #1f6fe0;
+}
+
 /* ===== CONFIRMATION ===== */
 .confirmation-container {
   display: flex;
@@ -272,6 +377,7 @@ button:disabled {
 /* ===== ERROR ===== */
 .error {
   color: #c62828;
+  margin-bottom: 10px;
   font-size: 0.9rem;
 }
 
@@ -305,4 +411,136 @@ button:disabled {
 @media (max-width: 768px) {
   article h1 { font-size: 1.6rem; }
   .table { font-size: 0.85rem; }
+}
+
+nav a {
+  margin-right: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #98b3fd;
+}
+
+nav a {
+  margin-right: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #98b3fd;
+}
+
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.filter-form label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== HOME PAGE ===== */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+/* overlay content */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* CTA */
+.hero-btn {
+  font-size: 1rem;
+  padding: 12px 20px;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.about-card {
+  max-width: 800px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  line-height: 1.7;
+}
+
+.about-card h2 {
+  margin-bottom: 15px;
+}
+
+/* ===== CTA BUTTON (homepage override) ===== */
+.btn-homepage {
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: black;
+  color: white;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-homepage:hover {
+  opacity: 0.9;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
 }

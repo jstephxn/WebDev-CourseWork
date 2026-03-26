@@ -43,7 +43,7 @@
 
     {{^isCancelled}}
       <form action="/bookings/{{id}}/cancel" method="POST">
-        <button class="btn danger" type="submit">
+        <button class="btn danger" type="submit" onclick="return confirm('Cancel this Course/Session?')">
           Cancel Booking
         </button>
       </form>

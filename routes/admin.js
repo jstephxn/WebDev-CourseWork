@@ -43,7 +43,7 @@ router.get("/create_user", requireInstructor, showCreateUserPage);
 router.post("/create_user", requireInstructor, createUser);
 router.get("/users/:id/edit", requireInstructor, showEditUserPage);
 router.post("/users/:id/update", requireInstructor, updateUser);
-router.post("/:id/delete_user", requireInstructor, deleteUser);
+router.post("/users/:id/delete_user", requireInstructor, deleteUser);
 
 
 export default router;

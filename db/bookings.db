@@ -1,3 +1,6 @@
-{"userId":"dYJeW9lmXO4LkQyh","courseId":"xCDt2iic4Rk3ap3M","type":"COURSE","sessionIds":["kmeNkF4ZMEqT9r5a","ExV8zRTh5lCjX40j"],"status":"CONFIRMED","createdAt":"2026-03-26T00:50:31.094Z","_id":"NzXAqcXZJCpJ4ak4"}
-{"userId":"dYJeW9lmXO4LkQyh","courseId":"F9uURXVy4dWDXTFO","type":"SESSION","sessionIds":["qs0l73g15RBXQWpP"],"status":"CONFIRMED","createdAt":"2026-03-26T00:50:12.901Z","_id":"znp0PZnAYelgKfV9"}
+{"userId":"dYJeW9lmXO4LkQyh","courseId":"EzsSo0GksCJZE3Gv","type":"SESSION","sessionIds":["xdfzsrbAdY50QAei"],"status":"CONFIRMED","createdAt":"2026-03-26T17:13:14.948Z","_id":"E25Z2WLhQCBhgsSe"}
+{"userId":"mO4DuTkjltraXwKO","courseId":"xCDt2iic4Rk3ap3M","type":"COURSE","sessionIds":["kmeNkF4ZMEqT9r5a","ExV8zRTh5lCjX40j"],"status":"CONFIRMED","createdAt":"2026-03-26T19:08:29.159Z","_id":"FHT8SRXzw2aL30mJ"}
 {"userId":"dYJeW9lmXO4LkQyh","courseId":"xCDt2iic4Rk3ap3M","type":"COURSE","sessionIds":["kmeNkF4ZMEqT9r5a","ExV8zRTh5lCjX40j"],"status":"CANCELLED","createdAt":"2026-03-26T00:50:31.094Z","_id":"NzXAqcXZJCpJ4ak4"}
+{"userId":"dYJeW9lmXO4LkQyh","courseId":"cz3VXSEWbT9aJzZN","type":"COURSE","sessionIds":["26CqNYgHxpYFjXM0","cu2Ztlkh5vFvl0uF","ozC94x8IJIazaJtH","PJLU7j4Aaaj2KypQ","I2DNcL8Zvv9xe9kf"],"status":"CONFIRMED","createdAt":"2026-03-26T17:13:32.565Z","_id":"Py3SQal77mX6KWSs"}
+{"userId":"mO4DuTkjltraXwKO","courseId":"F9uURXVy4dWDXTFO","type":"SESSION","sessionIds":["EvMEScB6K8raJuAn"],"status":"CANCELLED","createdAt":"2026-03-26T19:07:45.725Z","_id":"iNLFoLhaG0qrekx0"}
+{"userId":"dYJeW9lmXO4LkQyh","courseId":"F9uURXVy4dWDXTFO","type":"SESSION","sessionIds":["qs0l73g15RBXQWpP"],"status":"CONFIRMED","createdAt":"2026-03-26T00:50:12.901Z","_id":"znp0PZnAYelgKfV9"}
