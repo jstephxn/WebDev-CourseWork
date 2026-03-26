@@ -11,6 +11,10 @@ export const BookingModel = {
     return bookingsDb.find(query)
   },
 
+  async findOne(query){
+    return bookingsDb.findOne(query)
+  },
+
   async findById(id) {
     return bookingsDb.findOne({ _id: id });
   },
