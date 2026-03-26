@@ -16,13 +16,12 @@
     <h2>Book the full course</h2>
     {{#user}}
       {{#course.isBooked}}
-        <button class="btn" disabled>Already Booked<button>
+        <button class="btn" disabled>Already Booked</button>
       {{/course.isBooked}}
       {{^course.isBooked}}
-      <form action="/courses/{{course._id}}/book" method="POST">
-        <button class="btn primary" type="submit">
-          Book full course
-        </button>
+      <a href="/courses/{{course._id}}/book" class="btn primary">
+        Book full course
+      </a>
       </form>
       {{/course.isBooked}}
       {{#isInstructor}}

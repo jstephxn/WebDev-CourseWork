@@ -22,3 +22,5 @@
 {"courseId":"EzsSo0GksCJZE3Gv","startDateTime":"2026-02-02T18:30:00.000Z","endDateTime":"2026-02-02T19:45:00.000Z","capacity":18,"bookedCount":4,"_id":"xdfzsrbAdY50QAei"}
 {"courseId":"EzsSo0GksCJZE3Gv","startDateTime":"2026-02-16T18:30:00.000Z","endDateTime":"2026-02-16T19:45:00.000Z","capacity":18,"bookedCount":4,"_id":"yszmfHqc3Z0Ait7c"}
 {"$$indexCreated":{"fieldName":"courseId","unique":false,"sparse":false}}
+{"courseId":"xCDt2iic4Rk3ap3M","startDateTime":"2026-03-30T12:00","endDateTime":"2026-03-30T18:00","capacity":10,"bookedCount":1,"_id":"kmeNkF4ZMEqT9r5a"}
+{"courseId":"xCDt2iic4Rk3ap3M","startDateTime":"2026-03-31T10:00","endDateTime":"2026-03-31T17:00","capacity":5,"bookedCount":2,"_id":"ExV8zRTh5lCjX40j"}

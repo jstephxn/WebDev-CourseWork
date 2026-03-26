@@ -502,3 +502,84 @@ hr {
 .full-width {
   width: 100%;
 }
+
+.booking-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* FORM CARD */
+.booking-form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 20px;
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* FIELDSET */
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* INPUTS */
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* CHECKBOX */
+.field.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* BUTTON */
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: black;
+  color: white;
+}
+
+/* ERROR */
+.alert.error {
+  background: #fdecea;
+  color: #c82333;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}

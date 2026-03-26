@@ -27,9 +27,9 @@ List Key:
     ✅ Logged in Users able to view 'My Account' Page
     ✅ Logged in Users able to change their password
     ✅ Logged in Users able to view their bookings
-    ✅  Logged in users able to view thier session details in their bookings
+    ✅ Logged in users able to view thier session details in their bookings
     ✅ Logged in Users able to book Sessions rather than a full course.
-    ✅  Logged in Users able to cancel their booking
+    ✅ Logged in Users able to cancel their booking
 
     ✅ Admins (Instructors) able to add new courses
     ✅ Admins (Instructors) can add new sessions to courses
@@ -44,6 +44,7 @@ List Key:
     ✅ Admins (Instructors) can download a csv of course bookings
 
     ✅ Fix Courses Filter
+    🚧 Fully implement the course_book page
     ✅ Email Formatting check for registration
     ✅ Password Validation
     ✅ Add a show password button to login and register
